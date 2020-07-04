@@ -1,5 +1,7 @@
 import React from 'react';
 import Background from '../images/background.png';
+import { BOARD_WIDTH, BOARD_HEIGHT } from '../other/Constants';
+import Fields from './Fields';
 
 export default function Board() {
   return (
@@ -10,11 +12,14 @@ export default function Board() {
     >
       <div
         style={{
+          position: 'relative',
           backgroundImage: `url(${Background})`,
-          height: '400px',
-          width: '270px',
+          height: `${BOARD_HEIGHT}px`,
+          width: `${BOARD_WIDTH}px`,
         }}
-      ></div>
+      >
+        <Fields />
+      </div>
     </div>
   );
 }

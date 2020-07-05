@@ -26,8 +26,8 @@ const initializeFields = () => {
   let bottomWall: boolean = false;
   let rightWall: boolean = false;
   let leftWall: boolean = false;
-  // let hasHole: boolean = false;
-  // let hasDiamond: boolean = false;
+  let hasHole: boolean = false;
+  let hasDiamond: boolean = false;
   let leftFieldId: null | number = null;
   let rightFieldId: null | number = null;
   let topFieldId: null | number = null;
@@ -89,6 +89,12 @@ const initializeFields = () => {
       top = FIELD_HEIGHT * i;
       left = FIELD_WIDTH * j;
 
+      leftFieldId = j === 0 ? null : fieldId - 1;
+      rightFieldId = j === NUMBER_OF_COLUMNS - 1 ? null : fieldId + 1;
+      topFieldId = i === 0 ? null : fieldId - NUMBER_OF_COLUMNS;
+      bottomFieldId =
+        i === NUMBER_OF_ROWS - 1 ? null : fieldId + NUMBER_OF_COLUMNS;
+
       field = {
         top,
         left,
@@ -96,8 +102,8 @@ const initializeFields = () => {
         bottomWall,
         rightWall,
         leftWall,
-        // hasHole,
-        // hasDiamond,
+        hasHole,
+        hasDiamond,
         fieldId,
         leftFieldId,
         rightFieldId,
@@ -112,8 +118,8 @@ const initializeFields = () => {
       bottomWall = false;
       rightWall = false;
       leftWall = false;
-      // hasHole = false;
-      // hasDiamond = false;
+      hasHole = false;
+      hasDiamond = false;
     }
   }
 
@@ -134,8 +140,8 @@ const fieldsReducer = (state = initState, action: IActionUpdateField) => {
     // };
     case UPDATE_FIELD:
       const { fieldId, clickCounter } = action;
-      console.log('fieldId: ', fieldId);
-      console.log('clickCounter: ', clickCounter);
+      // console.log('fieldId: ', fieldId);
+      // console.log('clickCounter: ', clickCounter);
       const fields = state.fields.map((field) => {
         if (field.fieldId === fieldId) {
           return updateField(field, clickCounter);

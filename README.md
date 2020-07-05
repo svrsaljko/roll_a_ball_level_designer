@@ -1,6 +1,6 @@
 # ROLL A BALL LEVEL GENERATOR
 
-### T-REX LEVEL GENERATION EXAMPLE
+### T-REX LEVEL GENERATOR
 
 ![roll_a_ball_generator_gif](./reamdeImages/roll_a_ball_generator.gif)
 

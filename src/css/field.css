@@ -6,6 +6,6 @@
 
 .field:hover {
   cursor: pointer;
-  background-color: lightgrey;
-  opacity: 0.5;
+  background-color: sandybrown;
+  /* opacity: 0.2; */
 }

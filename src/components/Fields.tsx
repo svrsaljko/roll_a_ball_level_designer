@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { IRootReducer } from '../reducers';
+import { updateField } from '../actions/actions';
 import { IField } from '../interfaces/IField';
 import {
   NUMBER_OF_COLUMNS,
@@ -9,83 +13,33 @@ import {
 import Walls from './Walls';
 import '../css/field.css';
 
-const initializeFields = () => {
-  const fields = new Array<IField>(NUMBER_OF_ROWS * NUMBER_OF_COLUMNS);
-  let field: IField;
-  let fieldId: number = 0;
-  let topWall: boolean = false;
-  let bottomWall: boolean = false;
-  let rightWall: boolean = false;
-  let leftWall: boolean = false;
-  // let hasHole: boolean = false;
-  // let hasDiamond: boolean = false;
-  let leftFieldId: null | number = null;
-  let rightFieldId: null | number = null;
-  let topFieldId: null | number = null;
-  let bottomFieldId: null | number = null;
-  let top: number;
-  let left: number;
+interface IProps {
+  fields: IField[];
+  updateField(fieldId: number, clickCounter: number): void;
+}
 
-  for (let i = 0; i < NUMBER_OF_ROWS; i++) {
-    for (let j = 0; j < NUMBER_OF_COLUMNS; j++) {
-      // INITIALIZE SURROUNDING WALLS
-
-      if (i === 0) {
-        topWall = true;
-      }
-      if (i === NUMBER_OF_ROWS - 1) {
-        bottomWall = true;
-      }
-      if (j === 0) {
-        leftWall = true;
-      }
-      if (j === NUMBER_OF_COLUMNS - 1) {
-        rightWall = true;
-      }
-
-      //
-
-      top = FIELD_HEIGHT * i;
-      left = FIELD_WIDTH * j;
-
-      field = {
-        top,
-        left,
-        topWall,
-        bottomWall,
-        rightWall,
-        leftWall,
-        // hasHole,
-        // hasDiamond,
-        fieldId,
-        leftFieldId,
-        rightFieldId,
-        topFieldId,
-        bottomFieldId,
-      };
-
-      fields[fieldId] = field;
-      fieldId++;
-      topWall = false;
-      bottomWall = false;
-      rightWall = false;
-      leftWall = false;
-      // hasHole = false;
-      // hasDiamond = false;
-    }
+const onFieldClick = (
+  fieldId: number,
+  clickCounter: number,
+  updateField: (fieldId: number, clickCounter: number) => void
+) => {
+  // console.log('fieldId: ', fieldId);
+  // console.log('clickcounter: ', clickCounter);
+  if (clickCounter === 10) {
+    clickCounter = 0;
+  } else {
+    clickCounter++;
   }
-
-  return fields;
+  updateField(fieldId, clickCounter);
 };
+function Fields(props: IProps) {
+  //kad se sve zove use state
+  // ubacit use effect
+  // dodati u redux operacije za promjenu polja klikom misa :)
+  const [fields, setFields] = useState(props.fields);
+  // console.log('trenutna polja su: ', fields);
 
-const onFieldClick = (fieldId: number) => {
-  console.log('fieldId: ', fieldId);
-};
-
-export default function Fields() {
-  const [fields, setFields] = useState(initializeFields());
-  console.log('trenutna polja su: ', fields);
-
+  // console.log('props: ', props);
   return (
     <div>
       {fields.map((field) => (
@@ -93,7 +47,7 @@ export default function Fields() {
           className="field"
           key={field.fieldId}
           onClick={() => {
-            onFieldClick(field.fieldId);
+            onFieldClick(field.fieldId, field.clickCounter, props.updateField);
           }}
           style={{
             position: 'absolute',
@@ -115,3 +69,20 @@ export default function Fields() {
     </div>
   );
 }
+
+const mapStateToProps = (state: IRootReducer) => {
+  const fields: IField[] = state.fieldsReducer.fields;
+
+  return {
+    fields,
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    updateField: (fieldId: number, clickCounter: number) =>
+      dispatch(updateField(fieldId, clickCounter)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Fields);

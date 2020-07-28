@@ -1,19 +1,22 @@
 import React from 'react';
-import Background from '../images/background.png';
+import { connect } from 'react-redux';
+import { IRootReducer } from '../reducers';
+import { Background1, Background2, Background3, Background4 } from '../images';
 import { BOARD_WIDTH, BOARD_HEIGHT } from '../other/Constants';
 import Fields from './Fields';
 
-export default function Board() {
+interface IProps {
+  imgUrl: string;
+}
+
+function Board(props: IProps) {
+  const { imgUrl } = props;
   return (
-    <div
-      style={{
-        marginTop: '3rem',
-      }}
-    >
+    <div>
       <div
         style={{
           position: 'relative',
-          backgroundImage: `url(${Background})`,
+          backgroundImage: `url(${imgUrl})`,
           height: `${BOARD_HEIGHT}px`,
           width: `${BOARD_WIDTH}px`,
         }}
@@ -23,3 +26,13 @@ export default function Board() {
     </div>
   );
 }
+
+const mapStateToProps = (state: IRootReducer) => {
+  const imgUrl: string = state.fieldsDesignerReducer.imgUrl;
+
+  return {
+    imgUrl,
+  };
+};
+
+export default connect(mapStateToProps)(Board);

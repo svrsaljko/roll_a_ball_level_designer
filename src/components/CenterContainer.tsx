@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board';
+import FieldsDesigner from './FieldsDesigner';
 
 export default function CenterContainer() {
   return (
@@ -7,10 +8,13 @@ export default function CenterContainer() {
       style={{
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
+        marginTop: '3rem',
       }}
     >
+      <FieldsDesigner />
       <Board />
+      <FieldsDesigner />
     </div>
   );
 }

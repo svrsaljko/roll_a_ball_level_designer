@@ -1,10 +1,5 @@
-import { SET_ALL_FIELDS, UPDATE_FIELD } from '../actions/types';
-import {
-  // IActionSetAllFields,
-  IActionUpdateField,
-
-  // RollABallActionTypes,
-} from '../actions/actions';
+import { UPDATE_FIELD } from '../actions/types';
+import { IActionUpdateField } from '../actions/actions';
 import { IField } from '../interfaces/IField';
 import {
   NUMBER_OF_COLUMNS,
@@ -134,21 +129,15 @@ const initState: IFieldsReducerState = {
 
 const fieldsReducer = (state = initState, action: IActionUpdateField) => {
   switch (action.type) {
-    // case SET_ALL_FIELDS:
-    // return {
-    // fields: action.fields,
-    // };
     case UPDATE_FIELD:
       const { fieldId, clickCounter } = action;
-      // console.log('fieldId: ', fieldId);
-      // console.log('clickCounter: ', clickCounter);
+
       const fields = state.fields.map((field) => {
         if (field.fieldId === fieldId) {
           return updateField(field, clickCounter);
         }
         return field;
       });
-      // state.fields = fields;
       return {
         fields,
       };

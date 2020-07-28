@@ -1,0 +1,7 @@
+.fields-design-image {
+  /* border: 3px solid black; */
+}
+.fields-design-image:hover {
+  cursor: pointer;
+  border: 3px solid darkRed;
+}

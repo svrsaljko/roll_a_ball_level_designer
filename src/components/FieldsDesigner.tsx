@@ -8,35 +8,55 @@ import { updateFieldsDesign } from '../actions/actions';
 import '../css/fieldsDesigner.css';
 
 const FIELDS_DESIGNS = [
-  { title: 'yellow sand', description: 'Slow for rolling', image: Background1 },
-  { title: 'space1', description: 'Slow for rolling', image: Background2 },
-  { title: 'space2', description: 'Slow for rolling', image: Background3 },
-  { title: 'red sand', description: 'Slow for rolling', image: Background4 },
+  {
+    title: 'yellow sand',
+    description: 'Slow for rolling',
+    image: Background1,
+    currentFieldColor: 'gold',
+  },
+  {
+    title: 'space1',
+    description: 'Slow for rolling',
+    image: Background2,
+    currentFieldColor: '#4666ff',
+  },
+  {
+    title: 'space2',
+    description: 'Slow for rolling',
+    image: Background3,
+    currentFieldColor: '#bc13fe',
+  },
+  {
+    title: 'red sand',
+    description: 'Slow for rolling',
+    image: Background4,
+    currentFieldColor: 'sandybrown',
+  },
 ];
 
 interface IProps {
-  updateFieldsDesign: (imgUrl: string) => void;
+  updateFieldsDesign: (imgUrl: string, currentFieldColor: string) => void;
   imgUrl: string;
 }
 
 function FieldsDesigner(props: IProps) {
   const { updateFieldsDesign } = props;
   const { imgUrl } = props;
-  function onFieldDesignClick(imgUrl: string) {
+  const onFieldDesignClick = (imgUrl: string, currentFieldColor: string) => {
     console.log('imageurl: ', imgUrl);
-    updateFieldsDesign(imgUrl);
-  }
+    updateFieldsDesign(imgUrl, currentFieldColor);
+  };
 
   console.log('props: ', props);
 
   const fieldsDesigner = FIELDS_DESIGNS.map((fieldsDesign) => {
-    const { image, title, description } = fieldsDesign;
+    const { image, title, description, currentFieldColor } = fieldsDesign;
     return (
       <div style={{ margin: '0.5rem' }}>
         {title}
         <div
           onClick={() => {
-            onFieldDesignClick(image);
+            onFieldDesignClick(image, currentFieldColor);
           }}
           className="fields-design-image"
           style={{
@@ -77,8 +97,8 @@ const mapStateToProps = (state: IRootReducer) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    updateFieldsDesign: (imgUrl: string) =>
-      dispatch(updateFieldsDesign(imgUrl)),
+    updateFieldsDesign: (imgUrl: string, currentFieldColor: string) =>
+      dispatch(updateFieldsDesign(imgUrl, currentFieldColor)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(FieldsDesigner);

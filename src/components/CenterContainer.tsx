@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from './Board';
 import FieldsDesigner from './FieldsDesigner';
+import WallsDesigner from './WallsDesigner';
 
 export default function CenterContainer() {
   return (
@@ -14,7 +15,7 @@ export default function CenterContainer() {
     >
       <FieldsDesigner />
       <Board />
-      <FieldsDesigner />
+      <WallsDesigner />
     </div>
   );
 }

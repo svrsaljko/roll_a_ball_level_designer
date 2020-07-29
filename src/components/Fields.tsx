@@ -15,6 +15,7 @@ import '../css/field.css';
 
 interface IProps {
   fields: IField[];
+  currentFieldColor: string;
   updateField(fieldId: number, clickCounter: number): void;
 }
 
@@ -23,8 +24,6 @@ const onFieldClick = (
   clickCounter: number,
   updateField: (fieldId: number, clickCounter: number) => void
 ) => {
-  // console.log('fieldId: ', fieldId);
-  // console.log('clickcounter: ', clickCounter);
   if (clickCounter === 10) {
     clickCounter = 0;
   } else {
@@ -33,18 +32,23 @@ const onFieldClick = (
   updateField(fieldId, clickCounter);
 };
 function Fields(props: IProps) {
-  //kad se sve zove use state
-  // ubacit use effect
-  // dodati u redux operacije za promjenu polja klikom misa :)
   const [fields, setFields] = useState(props.fields);
-  // console.log('trenutna polja su: ', fields);
+  const { currentFieldColor } = props;
+  console.log('currentFieldColod:', currentFieldColor);
+  const over = (e: any) => {
+    e.target.style.backgroundColor = currentFieldColor.toString();
+  };
+  const out = (e: any) => {
+    e.target.style.backgroundColor = '';
+  };
 
-  // console.log('props: ', props);
   return (
     <div>
       {fields.map((field) => (
         <div
           className="field"
+          onMouseOver={over}
+          onMouseOut={out}
           key={field.fieldId}
           onClick={() => {
             onFieldClick(field.fieldId, field.clickCounter, props.updateField);
@@ -72,9 +76,12 @@ function Fields(props: IProps) {
 
 const mapStateToProps = (state: IRootReducer) => {
   const fields: IField[] = state.fieldsReducer.fields;
+  const currentFieldColor: string =
+    state.fieldsDesignerReducer.currentFieldColor;
 
   return {
     fields,
+    currentFieldColor,
   };
 };
 

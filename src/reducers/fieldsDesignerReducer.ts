@@ -4,10 +4,12 @@ import { Background1 } from '../images';
 
 export interface IFieldsDesignerReducerState {
   imgUrl: string;
+  currentFieldColor: string;
 }
 
 const initState: IFieldsDesignerReducerState = {
   imgUrl: Background1,
+  currentFieldColor: 'gold',
 };
 
 const fieldsDesignerReducer = (
@@ -18,6 +20,7 @@ const fieldsDesignerReducer = (
     case UPDATE_FIELDS_DESIGN:
       return {
         imgUrl: action.imgUrl,
+        currentFieldColor: action.currentFieldColor,
       };
     default:
       return state;

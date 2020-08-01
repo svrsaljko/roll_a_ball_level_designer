@@ -36,7 +36,7 @@ export default function Header() {
           >
             {' '}
           </div>
-          LL A BALL LEVEL GENERATOR
+          LL A BALL LEVEL DESIGNER
         </div>
       </div>
     </div>

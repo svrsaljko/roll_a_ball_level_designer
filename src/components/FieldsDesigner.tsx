@@ -2,7 +2,18 @@ import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { IRootReducer } from '../reducers';
-import { Background1, Background2, Background3, Background4 } from '../images';
+import {
+  Background1,
+  Background2,
+  Background3,
+  Background4,
+  Background5,
+  Background6,
+  Background7,
+  Brick7,
+  Brick4,
+  Brick5,
+} from '../images';
 import { BOARD_WIDTH, BOARD_HEIGHT } from '../other/Constants';
 import { updateFieldsDesign } from '../actions/actions';
 import '../css/fieldsDesigner.css';
@@ -31,6 +42,42 @@ const FIELDS_DESIGNS = [
     description: 'Slow for rolling',
     image: Background4,
     currentFieldColor: 'sandybrown',
+  },
+  {
+    title: 'wooden surface',
+    description: 'Slow for rolling',
+    image: Background5,
+    currentFieldColor: 'sandybrown',
+  },
+  {
+    title: 'sea',
+    description: 'Slow for rolling',
+    image: Brick7,
+    currentFieldColor: '#006994',
+  },
+  {
+    title: 'grass',
+    description: 'Slow for rolling',
+    image: Brick4,
+    currentFieldColor: '#567d46',
+  },
+  {
+    title: 'ice',
+    description: 'Slow for rolling',
+    image: Brick5,
+    currentFieldColor: '#006994',
+  },
+  {
+    title: 'moving water',
+    description: 'Slow for rolling',
+    image: Background6,
+    currentFieldColor: '#006994',
+  },
+  {
+    title: 'under water',
+    description: 'Slow for rolling',
+    image: Background7,
+    currentFieldColor: '#00b0ff',
   },
 ];
 
@@ -76,10 +123,11 @@ function FieldsDesigner(props: IProps) {
     <div>
       CHOOSE FIELD DESIGN:
       <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'auto auto',
-        }}
+        className="fields-designs-container"
+        // style={{
+        //   display: 'grid',
+        //   gridTemplateColumns: 'auto auto',
+        // }}
       >
         {fieldsDesigner}
       </div>

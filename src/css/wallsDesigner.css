@@ -1,0 +1,19 @@
+.walls-designer-container {
+  /* display: grid; */
+  /* grid-template-columns: 10rem 10rem 10rem; */
+  height: 36rem;
+  display: grid;
+  grid-template: repeat(3, 12rem) / repeat(3, 12rem);
+  border: 1px solid gray;
+}
+.wall-design-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  background-color: gray;
+  border: 1px solid gray;
+  padding: 2rem;
+}
+.wall-design-container:hover {
+  cursor: pointer;
+}

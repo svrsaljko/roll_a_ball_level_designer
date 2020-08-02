@@ -1,0 +1,21 @@
+.diamond {
+  border-style: solid;
+  border-color: transparent transparent #b9f2ff transparent;
+  box-sizing: content-box;
+}
+
+.diamond-after {
+  border-style: solid;
+  border-color: #b9f2ff transparent transparent transparent;
+}
+
+.black-hole {
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  background-color: black;
+  border-radius: 50%;
+}
+.black-hole:hover {
+  background-color: black;
+}

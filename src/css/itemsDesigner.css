@@ -1,0 +1,19 @@
+.items-designer-container {
+  height: 7.2rem;
+  display: grid;
+  grid-template: repeat(1, 12rem) / repeat(3, 12rem);
+  border: 1px solid gray;
+}
+
+.item-design-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  background-color: white;
+  border: 1px solid gray;
+  padding: 2rem;
+  height: 3rem;
+}
+.item-design-container:hover {
+  cursor: pointer;
+}

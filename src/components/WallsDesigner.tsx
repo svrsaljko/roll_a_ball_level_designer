@@ -2,25 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { updateWallsDesign } from '../actions/actions';
-import {
-  Brick1,
-  Brick2,
-  Brick3,
-  Brick4,
-  Brick5,
-  Brick6,
-  Brick7,
-  Brick8,
-  RotatedBrick1,
-  RotatedBrick2,
-  RotatedBrick3,
-  RotatedBrick4,
-  RotatedBrick5,
-  RotatedBrick6,
-  RotatedBrick7,
-  RotatedBrick8,
-  Background1,
-} from '../images';
+import { WALLS_DESIGNS } from '../other/Designer';
 import {
   FIELD_HEIGHT,
   FIELD_WIDTH,
@@ -39,83 +21,12 @@ interface IProps {
   rotatedBrick: string;
 }
 
-const WALLS_DESIGNS = [
-  {
-    title: 'classic castle wall',
-    description: 'Castle wall deisgn',
-    wall: Brick1,
-    rotatedWall: RotatedBrick1,
-    // currentFieldColor: 'gold',
-  },
-  {
-    title: 'orange brick wall',
-    description: 'classic orange brick wall',
-    wall: Brick2,
-    rotatedWall: RotatedBrick2,
-    // currentFieldColor: '#4666ff',
-  },
-  {
-    title: 'dark castle wall',
-    description: 'classic orange brick wall',
-    wall: Brick3,
-    rotatedWall: RotatedBrick3,
-    // currentFieldColor: '#4666ff',
-  },
-  {
-    title: 'grassy maze',
-    description: 'classic orange brick wall',
-    wall: Brick4,
-    rotatedWall: RotatedBrick4,
-    // currentFieldColor: '#4666ff',
-  },
-  {
-    title: 'ice wall 1',
-    description: 'classic orange brick wall',
-    wall: Brick5,
-    rotatedWall: RotatedBrick5,
-    // currentFieldColor: '#4666ff',
-  },
-  {
-    title: 'ice wall 2',
-    description: 'classic orange brick wall',
-    wall: Brick6,
-    rotatedWall: RotatedBrick6,
-    // currentFieldColor: '#4666ff',
-  },
-  {
-    title: 'water maze',
-    description: 'classic orange brick wall',
-    wall: Brick7,
-    rotatedWall: RotatedBrick7,
-    // currentFieldColor: '#4666ff',
-  },
-  {
-    title: 'wooden wall',
-    description: 'classic orange brick wall',
-    wall: Brick8,
-    rotatedWall: RotatedBrick8,
-    // currentFieldColor: '#4666ff',
-  },
-  {
-    title: 'sand wall',
-    description: 'classic orange brick wall',
-    wall: Background1,
-    rotatedWall: Background1,
-    // currentFieldColor: '#4666ff',
-  },
-];
-
 function WallsDesigner(props: IProps) {
   const { updateWallsDesign, brick, rotatedBrick } = props;
 
-  const onWallsDesignClick = (brick: string, rotatedBrick: string) => {
-    // console.log('imageurl: ', imgUrl);
-    updateWallsDesign(brick, rotatedBrick);
-  };
-
   const wallsDesigner = WALLS_DESIGNS.map((wallsDesign) => {
     const { wall, title, description, rotatedWall } = wallsDesign;
-    console.log('walls design: ', wallsDesign);
+    // console.log('walls design: ', wallsDesign);
     return (
       <div
         className="wall-design-container"
@@ -123,7 +34,7 @@ function WallsDesigner(props: IProps) {
           background: brick === wall ? 'gray' : 'white',
         }}
         onClick={() => {
-          onWallsDesignClick(wall, rotatedWall);
+          updateWallsDesign(wall, rotatedWall);
         }}
       >
         {title}

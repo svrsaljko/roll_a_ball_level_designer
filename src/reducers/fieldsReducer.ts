@@ -1,146 +1,47 @@
-import { UPDATE_FIELD } from '../actions/types';
-import { IActionUpdateField } from '../actions/actions';
-import { IField } from '../interfaces/IField';
 import {
-  NUMBER_OF_COLUMNS,
-  NUMBER_OF_ROWS,
-  FIELD_HEIGHT,
-  FIELD_WIDTH,
-} from '../other/Constants';
-import { updateField } from '../other/Helper';
+  UPDATE_FIELD,
+  UPDATE_ITEM,
+  UPDATE_ITEM_ACTION,
+} from '../actions/types';
+import { IActionUpdateFieldState } from '../actions/actions';
+import { IField } from '../interfaces/IField';
+import { USE_DARKRED_BALL } from '../other/Constants';
+
+import { updateField, updateItem, initializeFields } from '../other/Helper';
 
 export interface IFieldsReducerState {
   fields: IField[];
+  itemAction: string;
 }
-
-const initializeFields = () => {
-  const fields = new Array<IField>(NUMBER_OF_ROWS * NUMBER_OF_COLUMNS);
-  let field: IField;
-  let fieldId: number = 0;
-  let topWall: boolean = false;
-  let bottomWall: boolean = false;
-  let rightWall: boolean = false;
-  let leftWall: boolean = false;
-  let hasHole: boolean = false;
-  let hasDiamond: boolean = false;
-  let leftFieldId: null | number = null;
-  let rightFieldId: null | number = null;
-  let topFieldId: null | number = null;
-  let bottomFieldId: null | number = null;
-  let top: number;
-  let left: number;
-  let clickCounter: number;
-
-  for (let i = 0; i < NUMBER_OF_ROWS; i++) {
-    for (let j = 0; j < NUMBER_OF_COLUMNS; j++) {
-      // INITIALIZE SURROUNDING WALLS
-
-      clickCounter = 0;
-
-      if (i === 0) {
-        topWall = true;
-      }
-      if (i === NUMBER_OF_ROWS - 1) {
-        bottomWall = true;
-      }
-      if (j === 0) {
-        leftWall = true;
-      }
-      if (j === NUMBER_OF_COLUMNS - 1) {
-        rightWall = true;
-      }
-
-      // assign clickCounter to side walls
-      if (leftWall) {
-        clickCounter = 1;
-      }
-      if (topWall) {
-        clickCounter = 2;
-      }
-      if (rightWall) {
-        clickCounter = 3;
-      }
-      if (bottomWall) {
-        clickCounter = 4;
-      }
-      // assign clickCounter to corners
-
-      if (leftWall && bottomWall) {
-        clickCounter = 5;
-      }
-      if (leftWall && topWall) {
-        clickCounter = 6;
-      }
-
-      if (rightWall && topWall) {
-        clickCounter = 7;
-      }
-      if (rightWall && bottomWall) {
-        clickCounter = 8;
-      }
-
-      //
-
-      top = FIELD_HEIGHT * i;
-      left = FIELD_WIDTH * j;
-
-      leftFieldId = j === 0 ? null : fieldId - 1;
-      rightFieldId = j === NUMBER_OF_COLUMNS - 1 ? null : fieldId + 1;
-      topFieldId = i === 0 ? null : fieldId - NUMBER_OF_COLUMNS;
-      bottomFieldId =
-        i === NUMBER_OF_ROWS - 1 ? null : fieldId + NUMBER_OF_COLUMNS;
-
-      field = {
-        top,
-        left,
-        topWall,
-        bottomWall,
-        rightWall,
-        leftWall,
-        hasHole,
-        hasDiamond,
-        fieldId,
-        leftFieldId,
-        rightFieldId,
-        topFieldId,
-        bottomFieldId,
-        clickCounter,
-      };
-
-      fields[fieldId] = field;
-      fieldId++;
-      topWall = false;
-      bottomWall = false;
-      rightWall = false;
-      leftWall = false;
-      hasHole = false;
-      hasDiamond = false;
-    }
-  }
-
-  return fields;
-};
 
 const initState: IFieldsReducerState = {
   fields: initializeFields(),
+  itemAction: USE_DARKRED_BALL,
 };
 
-//**** PROMIJENIT IME AKCIJI */
-
-const fieldsReducer = (state = initState, action: IActionUpdateField) => {
+//******UPDATE WALL UMISTO UPDATE FIELD ??
+const fieldsReducer = (state = initState, action: IActionUpdateFieldState) => {
   switch (action.type) {
     case UPDATE_FIELD:
-      const { fieldId, clickCounter } = action;
-
-      const fields = state.fields.map((field) => {
-        if (field.fieldId === fieldId) {
-          return updateField(field, clickCounter);
+      let fieldsUpdateWall = state.fields.map((field) => {
+        if (field.fieldId === action.fieldId) {
+          return updateField(field, action.clickCounter);
         }
         return field;
       });
-      return {
-        fields,
-      };
+      return { ...state, fields: fieldsUpdateWall };
+    case UPDATE_ITEM:
+      let fieldsUpdateItem = state.fields.map((field) => {
+        if (field.fieldId === action.fieldId) {
+          return updateItem(field, state.itemAction);
+        }
+        return field;
+      });
+      return { ...state, fields: fieldsUpdateItem };
+
+    case UPDATE_ITEM_ACTION:
+      const { itemAction } = action;
+      return { ...state, itemAction };
     default:
       return state;
   }

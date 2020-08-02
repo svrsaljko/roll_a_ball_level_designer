@@ -1,11 +1,7 @@
 .field {
   border: 1px groove ivory;
-  /* border-width: 3px; */
-  /* border-color: lightblue; */
 }
 
 .field:hover {
   cursor: pointer;
-  /* background-color: #bc13fe; */
-  /* opacity: 0.2; */
 }

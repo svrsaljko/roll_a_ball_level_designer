@@ -5,7 +5,10 @@ import {
   VERTICAL_BRICK_WIDTH,
   HORIZONTAL_BRICK_WIDTH,
   HORIZONTAL_BRICK_HEIGHT,
+  FIELD_HEIGHT,
+  FIELD_WIDTH,
 } from '../other/Constants';
+import { Ball, BlackHole, Diamond } from '../other/Items';
 // import { Brick1, RotatedBrick1 } from '../images';
 import { connect } from 'react-redux';
 import { IRootReducer } from '../reducers';
@@ -21,8 +24,8 @@ interface IProps {
   rightWall: boolean;
   brick: string;
   rotatedBrick: string;
-  //   hasHole: boolean;
-  //   hasDiamond: boolean;
+  hasHole: boolean;
+  hasDiamond: boolean;
 }
 
 const drawWalls = (props: IProps) => {
@@ -33,6 +36,8 @@ const drawWalls = (props: IProps) => {
     rightWall,
     brick,
     rotatedBrick,
+    hasHole,
+    hasDiamond,
   } = props;
   const drawLeftAndRightWall = () => {
     return (
@@ -309,6 +314,32 @@ const drawWalls = (props: IProps) => {
     );
   };
 
+  const drawHole = () => {
+    return (
+      <div
+        style={{
+          marginTop: FIELD_HEIGHT / 5,
+          marginLeft: FIELD_WIDTH / 5,
+        }}
+      >
+        {BlackHole}
+      </div>
+    );
+  };
+
+  const drawDiamond = () => {
+    return (
+      <div
+        style={{
+          marginTop: FIELD_HEIGHT / 5,
+          marginLeft: FIELD_WIDTH / 5,
+        }}
+      >
+        {Diamond}
+      </div>
+    );
+  };
+
   if (topWall && leftWall) {
     return <div>{drawTopAndLeftWall()}</div>;
   } else if (bottomWall && rightWall) {
@@ -329,6 +360,10 @@ const drawWalls = (props: IProps) => {
     return <div> {drawLeftWall()} </div>;
   } else if (rightWall) {
     return <div> {drawRightWall()} </div>;
+  } else if (hasHole) {
+    return <div> {drawHole()} </div>;
+  } else if (hasDiamond) {
+    return <div> {drawDiamond()} </div>;
   }
 };
 

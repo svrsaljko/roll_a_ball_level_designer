@@ -50,7 +50,7 @@ function BottomContainer(props: IProps) {
 
 const mapStateToProps = (state: IRootReducer) => {
   const fields: IField[] = state.fieldsReducer.fields;
-  console.log('fields');
+  // console.log('fields');
 
   return {
     fields,

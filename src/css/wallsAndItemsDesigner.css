@@ -1,0 +1,74 @@
+.walls-and-items-designer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.buttons-container {
+  margin-left: 0.7rem;
+}
+
+/* normal */
+.button-walls-items {
+  display: inline-block;
+  transform: skew(-21deg);
+  border-left: none;
+  border-right: 1px solid gray;
+  border-top: none;
+  border-bottom: none;
+  margin: none;
+  padding: none;
+}
+
+.button-walls-items:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.button-walls-items:focus {
+  background: gray;
+  outline: none;
+  /* transform: skew(-21deg); */
+  outline-offset: none;
+}
+
+.button-walls-items:active {
+  transform: scale(1);
+}
+/* active */
+/* focus da ostane pod istim kutem */
+
+.button-walls-items-active {
+  background-color: gray;
+  display: inline-block;
+  transform: skew(-21deg);
+  border-left: none;
+  border-right: 1px solid gray;
+  border-top: none;
+  border-bottom: none;
+  margin: none;
+  padding: none;
+}
+.button-walls-items-active:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.button-walls-items-active:focus {
+  background: gray;
+  outline: none;
+  /* transform: skew(-21deg); */
+  outline-offset: none;
+}
+
+.button-walls-items-active:active {
+  transform: scale(1);
+}
+
+/* text */
+.button-walls-items-text {
+  display: inline-block;
+  transform: skew(21deg);
+  font-size: 1rem;
+  padding-left: 3.75rem;
+  padding-right: 3.75rem;
+}

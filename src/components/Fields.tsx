@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { IRootReducer } from '../reducers';
-import { updateField } from '../actions/actions';
+import { updateField, updateItem } from '../actions/actions';
 import { IField } from '../interfaces/IField';
 import {
   NUMBER_OF_COLUMNS,
@@ -17,6 +17,8 @@ interface IProps {
   fields: IField[];
   currentFieldColor: string;
   updateField(fieldId: number, clickCounter: number): void;
+  updateItem(fieldId: number): void;
+  menuState: boolean;
 }
 
 const onFieldClick = (
@@ -32,9 +34,9 @@ const onFieldClick = (
   updateField(fieldId, clickCounter);
 };
 function Fields(props: IProps) {
-  const [fields, setFields] = useState(props.fields);
-  const { currentFieldColor } = props;
-  console.log('currentFieldColod:', currentFieldColor);
+  let fields = props.fields;
+  const { currentFieldColor, menuState, updateField, updateItem } = props;
+  // console.log('currentFieldColod:', currentFieldColor);
   const over = (e: any) => {
     e.target.style.backgroundColor = currentFieldColor.toString();
   };
@@ -51,11 +53,12 @@ function Fields(props: IProps) {
           onMouseOut={out}
           key={field.fieldId}
           onClick={() => {
-            onFieldClick(field.fieldId, field.clickCounter, props.updateField);
+            menuState
+              ? onFieldClick(field.fieldId, field.clickCounter, updateField)
+              : updateItem(field.fieldId);
           }}
           style={{
             position: 'absolute',
-
             top: `${field.top}px`,
             left: `${field.left}px`,
             width: `${FIELD_WIDTH}px`,
@@ -67,6 +70,8 @@ function Fields(props: IProps) {
             bottomWall={field.bottomWall}
             rightWall={field.rightWall}
             leftWall={field.leftWall}
+            hasHole={field.hasHole}
+            hasDiamond={field.hasDiamond}
           />
         </div>
       ))}
@@ -76,12 +81,13 @@ function Fields(props: IProps) {
 
 const mapStateToProps = (state: IRootReducer) => {
   const fields: IField[] = state.fieldsReducer.fields;
+  const menuState = state.menuReducer.menuState;
   const currentFieldColor: string =
     state.fieldsDesignerReducer.currentFieldColor;
-
   return {
     fields,
     currentFieldColor,
+    menuState,
   };
 };
 
@@ -89,6 +95,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateField: (fieldId: number, clickCounter: number) =>
       dispatch(updateField(fieldId, clickCounter)),
+    updateItem: (fieldId: number) => dispatch(updateItem(fieldId)),
   };
 };
 

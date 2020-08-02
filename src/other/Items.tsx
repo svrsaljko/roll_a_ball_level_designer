@@ -1,5 +1,4 @@
 import React from 'react';
-import { FIELD_HEIGHT, FIELD_WIDTH } from './Constants';
 import '../css/items.css';
 
 const BALL_SIZE = 10;
@@ -31,6 +30,30 @@ const WhiteHole = (
   ></div>
 );
 
+const Ruby = (
+  <div
+    style={{
+      position: 'absolute',
+    }}
+  >
+    <div
+      style={{
+        borderWidth: `0 ${BALL_SIZE / 2}px ${BALL_SIZE / 2}px ${
+          BALL_SIZE / 2
+        }px`,
+
+        width: `${BALL_SIZE}px`,
+      }}
+      className="ruby"
+    ></div>
+    <div
+      style={{
+        borderWidth: `${1.4 * BALL_SIZE}px ${BALL_SIZE}px 0 ${BALL_SIZE}px`,
+      }}
+      className="ruby-after"
+    ></div>
+  </div>
+);
 const Diamond = (
   <div
     style={{
@@ -56,4 +79,80 @@ const Diamond = (
   </div>
 );
 
-export { Ball, BlackHole, WhiteHole, Diamond };
+const Emerald = (
+  <div
+    style={{
+      position: 'absolute',
+    }}
+  >
+    <div
+      style={{
+        borderWidth: `0 ${BALL_SIZE / 2}px ${BALL_SIZE / 2}px ${
+          BALL_SIZE / 2
+        }px`,
+
+        width: `${BALL_SIZE}px`,
+      }}
+      className="emerald"
+    ></div>
+    <div
+      style={{
+        borderWidth: `${1.4 * BALL_SIZE}px ${BALL_SIZE}px 0 ${BALL_SIZE}px`,
+      }}
+      className="emerald-after"
+    ></div>
+  </div>
+);
+const Sapphire = (
+  <div
+    style={{
+      position: 'absolute',
+    }}
+  >
+    <div
+      style={{
+        borderWidth: `0 ${BALL_SIZE / 2}px ${BALL_SIZE / 2}px ${
+          BALL_SIZE / 2
+        }px`,
+
+        width: `${BALL_SIZE}px`,
+      }}
+      className="sapphire"
+    ></div>
+    <div
+      style={{
+        borderWidth: `${1.4 * BALL_SIZE}px ${BALL_SIZE}px 0 ${BALL_SIZE}px`,
+      }}
+      className="sapphire-after"
+    ></div>
+  </div>
+);
+
+const Gold = (
+  <div
+    style={{
+      marginTop: '0.5rem',
+    }}
+    className="gold"
+  ></div>
+);
+const Silver = (
+  <div
+    style={{
+      marginTop: '0.5rem',
+    }}
+    className="silver"
+  ></div>
+);
+
+export {
+  Ball,
+  BlackHole,
+  WhiteHole,
+  Diamond,
+  Emerald,
+  Ruby,
+  Sapphire,
+  Gold,
+  Silver,
+};

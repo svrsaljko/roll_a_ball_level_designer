@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { IRootReducer } from '../reducers';
 import { updateField, updateItem } from '../actions/actions';
 import { IField } from '../interfaces/IField';
-import {
-  NUMBER_OF_COLUMNS,
-  NUMBER_OF_ROWS,
-  FIELD_HEIGHT,
-  FIELD_WIDTH,
-} from '../other/Constants';
+import { FIELD_HEIGHT, FIELD_WIDTH } from '../other/Constants';
 import Walls from './Walls';
 import '../css/field.css';
 
@@ -19,6 +14,7 @@ interface IProps {
   updateField(fieldId: number, clickCounter: number): void;
   updateItem(fieldId: number): void;
   menuState: boolean;
+  borderState: boolean;
 }
 
 const onFieldClick = (
@@ -35,8 +31,13 @@ const onFieldClick = (
 };
 function Fields(props: IProps) {
   let fields = props.fields;
-  const { currentFieldColor, menuState, updateField, updateItem } = props;
-  // console.log('currentFieldColod:', currentFieldColor);
+  const {
+    currentFieldColor,
+    menuState,
+    borderState,
+    updateField,
+    updateItem,
+  } = props;
   const over = (e: any) => {
     e.target.style.backgroundColor = currentFieldColor.toString();
   };
@@ -58,6 +59,8 @@ function Fields(props: IProps) {
               : updateItem(field.fieldId);
           }}
           style={{
+            border: borderState ? '1px groove ivory' : 'none',
+
             position: 'absolute',
             top: `${field.top}px`,
             left: `${field.left}px`,
@@ -80,14 +83,15 @@ function Fields(props: IProps) {
 }
 
 const mapStateToProps = (state: IRootReducer) => {
-  const fields: IField[] = state.fieldsReducer.fields;
-  const menuState = state.menuReducer.menuState;
-  const currentFieldColor: string =
-    state.fieldsDesignerReducer.currentFieldColor;
+  const { fields } = state.fieldsReducer;
+  const { menuState } = state.menuReducer;
+  const { currentFieldColor } = state.fieldsDesignerReducer;
+  const { borderState } = state.borderReducer;
   return {
     fields,
     currentFieldColor,
     menuState,
+    borderState,
   };
 };
 

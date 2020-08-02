@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { IRootReducer } from '../reducers';
 import { ITEMS_DESIGNES } from '../other/Designer';
-import { USE_DARKRED_BALL } from '../other/Constants';
 import '../css/itemsDesigner.css';
 import { updateItemAction } from '../actions/actions';
 
 interface IProps {
   updateItemAction: (itemAction: string) => void;
+  itemAction: string;
 }
 
 function ItemsDesigner(props: IProps) {
-  const { updateItemAction } = props;
-  const [activeItem, setActiveItem] = useState(USE_DARKRED_BALL);
+  const { updateItemAction, itemAction } = props;
+  const [activeItem, setActiveItem] = useState(itemAction);
+
+  useEffect(() => {
+    setActiveItem(itemAction);
+    return () => {
+      setActiveItem(itemAction);
+    };
+  }, []);
+
   const itemsDesigner = ITEMS_DESIGNES.map((itemsDesign) => {
     const { title, item, action } = itemsDesign;
     return (
@@ -41,7 +50,6 @@ function ItemsDesigner(props: IProps) {
             flexDirection: 'row',
             justifyContent: 'center',
           }}
-          // style={{ position: 'relative' }}
         >
           {item}
         </div>
@@ -52,6 +60,14 @@ function ItemsDesigner(props: IProps) {
   return <div className="items-designer-container">{itemsDesigner}</div>;
 }
 
+const mapStateToProps = (state: IRootReducer) => {
+  const itemAction = state.fieldsReducer.itemAction;
+
+  return {
+    itemAction,
+  };
+};
+
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateItemAction: (itemAction: string) =>
@@ -59,4 +75,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ItemsDesigner);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemsDesigner);

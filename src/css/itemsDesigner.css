@@ -1,7 +1,7 @@
 .items-designer-container {
   height: 7.2rem;
   display: grid;
-  grid-template: repeat(1, 12rem) / repeat(3, 12rem);
+  grid-template: repeat(2, 7.2rem) / repeat(3, 12rem);
   border: 1px solid gray;
 }
 

@@ -5,6 +5,7 @@ import {
   UPDATE_MENU_STATE,
   UPDATE_ITEM,
   UPDATE_ITEM_ACTION,
+  UPDATE_BORDER_STATE,
 } from './types';
 
 interface IActionUpdateField {
@@ -42,6 +43,10 @@ export interface IActionUpdateMenuState {
   type: string;
   menuState: boolean;
 }
+export interface IActionUpdateBorderState {
+  type: string;
+  borderState: boolean;
+}
 
 export const updateField = (fieldId: number, clickCounter: number) => {
   return { type: UPDATE_FIELD, fieldId, clickCounter };
@@ -65,4 +70,7 @@ export const updateWallsDesign = (brick: string, rotatedBrick: string) => {
 };
 export const updateMenuState = (menuState: boolean) => {
   return { type: UPDATE_MENU_STATE, menuState };
+};
+export const updateBorderState = (borderState: boolean) => {
+  return { type: UPDATE_BORDER_STATE, borderState };
 };

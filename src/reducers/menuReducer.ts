@@ -12,7 +12,6 @@ const initState: IMenuReducerState = {
 const menuReducer = (state = initState, action: IActionUpdateMenuState) => {
   switch (action.type) {
     case UPDATE_MENU_STATE:
-      // console.log('action.menuState: ', action.menuState);
       return {
         menuState: action.menuState,
       };

@@ -4,8 +4,6 @@ import { Dispatch } from 'redux';
 import { updateWallsDesign } from '../actions/actions';
 import { WALLS_DESIGNS } from '../other/Designer';
 import {
-  FIELD_HEIGHT,
-  FIELD_WIDTH,
   VERTICAL_BRICK_WIDTH,
   VERTICAL_BRICK_S_HEIGHT,
   HORIZONTAL_BRICK_HEIGHT,
@@ -22,11 +20,10 @@ interface IProps {
 }
 
 function WallsDesigner(props: IProps) {
-  const { updateWallsDesign, brick, rotatedBrick } = props;
+  const { updateWallsDesign, brick } = props;
 
   const wallsDesigner = WALLS_DESIGNS.map((wallsDesign) => {
-    const { wall, title, description, rotatedWall } = wallsDesign;
-    // console.log('walls design: ', wallsDesign);
+    const { wall, title, rotatedWall } = wallsDesign;
     return (
       <div
         className="wall-design-container"

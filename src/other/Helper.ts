@@ -7,6 +7,7 @@ import {
   USE_DARKRED_BALL,
   USE_BLACK_HOLE,
   USE_CLASSIC_DIAMOND,
+  USE_EMERALD,
 } from './Constants';
 
 export const updateField = (field: IField, clickCounter: number): IField => {
@@ -76,33 +77,49 @@ export const updateField = (field: IField, clickCounter: number): IField => {
 };
 
 export const updateItem = (field: IField, itemAction: string): IField => {
-  if (USE_DARKRED_BALL === itemAction) {
-    field.hasBall = true;
-    field.hasDiamond = false;
-    field.hasHole = false;
-    field.topWall = false;
-    field.bottomWall = false;
-    field.rightWall = false;
-    field.leftWall = false;
-  } else if (USE_BLACK_HOLE === itemAction) {
-    field.hasBall = false;
-    field.hasDiamond = false;
-    field.hasHole = true;
-    field.topWall = false;
-    field.bottomWall = false;
-    field.rightWall = false;
-    field.leftWall = false;
-  } else if (USE_CLASSIC_DIAMOND === itemAction) {
-    console.log('HELPER METHOD DIAMOND');
-    field.hasBall = false;
-    field.hasDiamond = true;
-    field.hasHole = false;
-    field.topWall = false;
-    field.bottomWall = false;
-    field.rightWall = false;
-    field.leftWall = false;
+  switch (itemAction) {
+    case USE_DARKRED_BALL: {
+      field.hasBall = true;
+      field.hasDiamond = false;
+      field.hasHole = false;
+      field.topWall = false;
+      field.bottomWall = false;
+      field.rightWall = false;
+      field.leftWall = false;
+
+      return field;
+    }
+    case USE_BLACK_HOLE: {
+      field.hasBall = false;
+      field.hasDiamond = false;
+      field.hasHole = true;
+      field.topWall = false;
+      field.bottomWall = false;
+      field.rightWall = false;
+      field.leftWall = false;
+      return field;
+    }
+    case USE_CLASSIC_DIAMOND: {
+      field.hasBall = false;
+      field.hasDiamond = true;
+      field.hasHole = false;
+      field.topWall = false;
+      field.bottomWall = false;
+      field.rightWall = false;
+      field.leftWall = false;
+      return field;
+    }
+    default: {
+      field.hasBall = false;
+      field.hasDiamond = false;
+      field.hasHole = false;
+      field.topWall = false;
+      field.bottomWall = false;
+      field.rightWall = false;
+      field.leftWall = false;
+      return field;
+    }
   }
-  return field;
 };
 
 export const initializeFields = () => {

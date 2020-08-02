@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { IRootReducer } from '../reducers';
-import { Background1, Background2, Background3, Background4 } from '../images';
 import { BOARD_WIDTH, BOARD_HEIGHT } from '../other/Constants';
 import Fields from './Fields';
 

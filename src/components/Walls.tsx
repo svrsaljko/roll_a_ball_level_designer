@@ -9,13 +9,8 @@ import {
   FIELD_WIDTH,
 } from '../other/Constants';
 import { Ball, BlackHole, Diamond } from '../other/Items';
-// import { Brick1, RotatedBrick1 } from '../images';
 import { connect } from 'react-redux';
 import { IRootReducer } from '../reducers';
-
-// import  from '../images';
-// import Hole from './Hole';
-// import Diamond from './Diamond';
 
 interface IProps {
   topWall: boolean;

@@ -7,12 +7,14 @@ import wallsDesignerReducer, {
   IWallsDesignerReducerState,
 } from './wallsDesignerReducer';
 import menuReducer, { IMenuReducerState } from './menuReducer';
+import borderReducer, { IBorderReducerState } from './borderReducer';
 
 export interface IRootReducer {
   fieldsReducer: IFieldsReducerState;
   fieldsDesignerReducer: IFieldsDesignerReducerState;
   wallsDesignerReducer: IWallsDesignerReducerState;
   menuReducer: IMenuReducerState;
+  borderReducer: IBorderReducerState;
 }
 
 export default combineReducers({
@@ -20,4 +22,5 @@ export default combineReducers({
   fieldsDesignerReducer,
   wallsDesignerReducer,
   menuReducer,
+  borderReducer,
 });

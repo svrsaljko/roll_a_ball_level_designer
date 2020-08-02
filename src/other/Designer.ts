@@ -24,12 +24,22 @@ import {
   RotatedBrick8,
 } from '../images';
 
-import { Ball, BlackHole, WhiteHole, Diamond } from '../other/Items';
+import {
+  Ball,
+  BlackHole,
+  Diamond,
+  Emerald,
+  Ruby,
+  Sapphire,
+  Gold,
+  Silver,
+} from '../other/Items';
 
 import {
   USE_DARKRED_BALL,
   USE_BLACK_HOLE,
   USE_CLASSIC_DIAMOND,
+  USE_EMERALD,
 } from './Constants';
 
 export const FIELDS_DESIGNS = [
@@ -172,13 +182,35 @@ export const ITEMS_DESIGNES = [
     item: BlackHole,
     action: USE_BLACK_HOLE,
   },
-  //   {
-  //     title: 'white hole',
-  //     item: WhiteHole,
-  //   },
+
   {
     title: 'classic diamond',
     item: Diamond,
     action: USE_CLASSIC_DIAMOND,
+  },
+  {
+    title: 'emerald',
+    item: Emerald,
+    action: USE_EMERALD,
+  },
+  {
+    title: 'ruby',
+    item: Ruby,
+    action: USE_EMERALD,
+  },
+  {
+    title: 'sapphire',
+    item: Sapphire,
+    action: USE_EMERALD,
+  },
+  {
+    title: 'gold',
+    item: Gold,
+    action: USE_EMERALD,
+  },
+  {
+    title: 'silver',
+    item: Silver,
+    action: USE_EMERALD,
   },
 ];

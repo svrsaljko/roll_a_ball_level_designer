@@ -9,6 +9,7 @@ function App() {
       <Header />
 
       <CenterContainer />
+      {/* komponenta za brisati */}
       {/* <BottomContainer /> */}
     </div>
   );

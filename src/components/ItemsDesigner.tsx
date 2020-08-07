@@ -40,6 +40,7 @@ function ItemsDesigner(props: IProps) {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
+            marginBottom: '0.5rem',
           }}
         >
           {title}

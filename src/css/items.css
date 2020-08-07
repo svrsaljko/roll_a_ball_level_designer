@@ -1,52 +1,16 @@
 .diamond {
   border-style: solid;
-  border-color: transparent transparent #b9f2ff transparent;
   box-sizing: content-box;
 }
 
 .diamond-after {
   border-style: solid;
-  border-color: #b9f2ff transparent transparent transparent;
-}
-.ruby {
-  border-style: solid;
-  border-color: transparent transparent #e0115f transparent;
-  box-sizing: content-box;
 }
 
-.ruby-after {
-  border-style: solid;
-  border-color: #e0115f transparent transparent transparent;
-}
-.emerald {
-  border-style: solid;
-  border-color: transparent transparent #50c878 transparent;
-  box-sizing: content-box;
-}
-
-.emerald-after {
-  border-style: solid;
-  border-color: #50c878 transparent transparent transparent;
-}
-.sapphire {
-  border-style: solid;
-  border-color: transparent transparent #0f52ba transparent;
-  box-sizing: content-box;
-}
-
-.sapphire-after {
-  border-style: solid;
-  border-color: #0f52ba transparent transparent transparent;
-}
-
-.black-hole {
-  position: absolute;
-  height: 2rem;
-  width: 2rem;
+.black-door {
   background-color: black;
-  border-radius: 50%;
 }
-.black-hole:hover {
+.black-door:hover {
   background-color: black;
 }
 

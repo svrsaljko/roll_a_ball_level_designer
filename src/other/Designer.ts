@@ -25,14 +25,21 @@ import {
 } from '../images';
 
 import {
-  Ball,
-  BlackHole,
+  DarkRedBall,
+  IceBall,
+  NeonBlueBall,
+  BlackDoor,
+  GoldDoor,
+  IceDoor,
   Diamond,
   Emerald,
   Ruby,
   Sapphire,
   Gold,
   Silver,
+  NeonGreenEnemy,
+  NeonRedEnemy,
+  NeonBlueEnemy,
 } from '../other/Items';
 
 import {
@@ -172,17 +179,53 @@ export const WALLS_DESIGNS = [
 ];
 
 export const ITEMS_DESIGNES = [
+  // BALL
+
   {
     title: 'dark red ball',
-    item: Ball,
+    item: DarkRedBall,
     action: USE_DARKRED_BALL,
   },
   {
-    title: 'black hole',
-    item: BlackHole,
-    action: USE_BLACK_HOLE,
+    title: 'dark red ball',
+    item: IceBall,
+    action: USE_DARKRED_BALL,
+  },
+  {
+    title: 'dark red ball',
+    item: NeonBlueBall,
+    action: USE_DARKRED_BALL,
+  },
+  // DOOR
+
+  {
+    title: 'dark red ball',
+    item: BlackDoor,
+    action: USE_DARKRED_BALL,
+  },
+  {
+    title: 'dark red ball',
+    item: GoldDoor,
+    action: USE_DARKRED_BALL,
+  },
+  {
+    title: 'dark red ball',
+    item: IceDoor,
+    action: USE_DARKRED_BALL,
   },
 
+  //ITEMS
+
+  {
+    title: 'gold',
+    item: Gold,
+    action: USE_EMERALD,
+  },
+  {
+    title: 'silver',
+    item: Silver,
+    action: USE_EMERALD,
+  },
   {
     title: 'classic diamond',
     item: Diamond,
@@ -203,14 +246,20 @@ export const ITEMS_DESIGNES = [
     item: Sapphire,
     action: USE_EMERALD,
   },
+  // ENEMIES
   {
-    title: 'gold',
-    item: Gold,
+    title: 'sapphire',
+    item: NeonGreenEnemy,
     action: USE_EMERALD,
   },
   {
-    title: 'silver',
-    item: Silver,
+    title: 'sapphire',
+    item: NeonRedEnemy,
+    action: USE_EMERALD,
+  },
+  {
+    title: 'sapphire',
+    item: NeonBlueEnemy,
     action: USE_EMERALD,
   },
 ];

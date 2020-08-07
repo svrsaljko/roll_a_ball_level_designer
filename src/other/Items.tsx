@@ -3,130 +3,89 @@ import '../css/items.css';
 
 const BALL_SIZE = 10;
 
-const Ball = (
-  <div
-    style={{
-      height: `2rem`,
-      width: `2rem`,
-      backgroundColor: 'darkRed',
-      borderRadius: '50%',
-      display: 'inline-block',
-    }}
-  ></div>
-);
+// DRAW FUNCTIONS
 
-const BlackHole = <div className="black-hole"></div>;
-
-const WhiteHole = (
-  <div
-    style={{
-      height: `2rem`,
-      width: `2rem`,
-      backgroundColor: 'white',
-      borderRadius: '50%',
-      display: 'inline-block',
-      marginTop: '0.5rem',
-    }}
-  ></div>
-);
-
-const Ruby = (
-  <div
-    style={{
-      position: 'absolute',
-    }}
-  >
+const createDiamondCutShape = (color: string) => {
+  return (
     <div
       style={{
-        borderWidth: `0 ${BALL_SIZE / 2}px ${BALL_SIZE / 2}px ${
-          BALL_SIZE / 2
-        }px`,
+        position: 'absolute',
+      }}
+    >
+      <div
+        style={{
+          borderWidth: `0 ${BALL_SIZE / 2}px ${BALL_SIZE / 2}px ${
+            BALL_SIZE / 2
+          }px`,
+          borderColor: `transparent transparent ${color} transparent`,
+          width: `${BALL_SIZE}px`,
+        }}
+        className="diamond"
+      ></div>
+      <div
+        style={{
+          borderWidth: `${1.4 * BALL_SIZE}px ${BALL_SIZE}px 0 ${BALL_SIZE}px`,
+          borderColor: `${color} transparent transparent transparent`,
+        }}
+        className="diamond-after"
+      ></div>
+    </div>
+  );
+};
 
-        width: `${BALL_SIZE}px`,
-      }}
-      className="ruby"
-    ></div>
+const createCircleShape = (color: string, className?: string) => {
+  return (
     <div
+      className={className}
       style={{
-        borderWidth: `${1.4 * BALL_SIZE}px ${BALL_SIZE}px 0 ${BALL_SIZE}px`,
+        height: `2rem`,
+        width: `2rem`,
+        backgroundColor: `${color}`,
+        borderRadius: '50%',
+        display: 'inline-block',
       }}
-      className="ruby-after"
     ></div>
-  </div>
-);
-const Diamond = (
-  <div
-    style={{
-      position: 'absolute',
-    }}
-  >
-    <div
-      style={{
-        borderWidth: `0 ${BALL_SIZE / 2}px ${BALL_SIZE / 2}px ${
-          BALL_SIZE / 2
-        }px`,
+  );
+};
 
-        width: `${BALL_SIZE}px`,
-      }}
-      className="diamond"
-    ></div>
+const createEnemy = (color: string) => {
+  return (
     <div
       style={{
-        borderWidth: `${1.4 * BALL_SIZE}px ${BALL_SIZE}px 0 ${BALL_SIZE}px`,
+        boxShadow: `0 0 0 0.2rem ${color}, 0 0.2rem 0 0.2rem ${color},-0.5rem 0.3rem 0 0.1rem ${color}, 0.5rem 0.3rem 0 0.1rem ${color},-0.6rem -0.6rem 0 0 ${color}, 0.6em -0.6rem 0 0 ${color}, -0.4rem -0.4rem 0 0 ${color},0.4rem -0.4rem 0 0 ${color}, -0.6rem -0.2rem 0 0 ${color}, -0.4rem -0.2rem 0 0 ${color},0.4rem -0.2rem 0 0 ${color}, 0.6rem -0.2rem 0 0 ${color}, -0.8rem 0 0 0 ${color},-0.6rem 0 0 0 ${color}, 0.6rem 0 0 0 ${color}, 0.8rem 0 0 0 ${color}, -1rem 0.2rem 0 0 ${color},-0.8rem 0.2rem 0 0 ${color}, 0.8rem 0.2rem 0 0 ${color}, 1rem 0.2rem 0 0 ${color},-1rem 0.4rem 0 0 ${color}, 1rem 0.4rem 0 0 ${color}, -1rem 0.6rem 0 0 ${color},-0.6rem 0.6rem 0 0 ${color}, 0.6rem 0.6rem 0 0 ${color}, 1rem 0.6rem 0 0 ${color},-0.4rem 0.8rem 0 0 ${color}, -0.2rem 0.8rem 0 0 ${color}, 0.2rem 0.8rem 0 0 ${color},0.4rem 0.8rem 0 0 ${color}`,
+        background: `${color}`,
+        width: ' 0.2rem',
+        height: '0.2rem',
+        overflow: 'hidden',
       }}
-      className="diamond-after"
     ></div>
-  </div>
-);
+  );
+};
 
-const Emerald = (
-  <div
-    style={{
-      position: 'absolute',
-    }}
-  >
-    <div
-      style={{
-        borderWidth: `0 ${BALL_SIZE / 2}px ${BALL_SIZE / 2}px ${
-          BALL_SIZE / 2
-        }px`,
+//
 
-        width: `${BALL_SIZE}px`,
-      }}
-      className="emerald"
-    ></div>
-    <div
-      style={{
-        borderWidth: `${1.4 * BALL_SIZE}px ${BALL_SIZE}px 0 ${BALL_SIZE}px`,
-      }}
-      className="emerald-after"
-    ></div>
-  </div>
-);
-const Sapphire = (
-  <div
-    style={{
-      position: 'absolute',
-    }}
-  >
-    <div
-      style={{
-        borderWidth: `0 ${BALL_SIZE / 2}px ${BALL_SIZE / 2}px ${
-          BALL_SIZE / 2
-        }px`,
+// BALLS
 
-        width: `${BALL_SIZE}px`,
-      }}
-      className="sapphire"
-    ></div>
-    <div
-      style={{
-        borderWidth: `${1.4 * BALL_SIZE}px ${BALL_SIZE}px 0 ${BALL_SIZE}px`,
-      }}
-      className="sapphire-after"
-    ></div>
-  </div>
-);
+const DarkRedBall = createCircleShape('darkRed');
+const IceBall = createCircleShape('#dcf3ff');
+const NeonBlueBall = createCircleShape('#1b03a3');
+
+//
+
+// DOOR
+
+const BlackDoor = createCircleShape('black', 'black-door');
+const GoldDoor = createCircleShape('#ffd700');
+const IceDoor = createCircleShape('#396d7c');
+
+//
+
+// ITEMS
+
+const Ruby = createDiamondCutShape('#e0115f');
+const Diamond = createDiamondCutShape('#b9f2ff');
+const Emerald = createDiamondCutShape('#50c878');
+const Sapphire = createDiamondCutShape('#0f52ba');
 
 const Gold = (
   <div
@@ -144,15 +103,28 @@ const Silver = (
     className="silver"
   ></div>
 );
+//
 
+// ENEMY
+const NeonGreenEnemy = createEnemy('#39ff14');
+const NeonRedEnemy = createEnemy('#b92e34');
+const NeonBlueEnemy = createEnemy('#1b03a3');
+
+//
 export {
-  Ball,
-  BlackHole,
-  WhiteHole,
+  DarkRedBall,
+  IceBall,
+  NeonBlueBall,
+  BlackDoor,
+  GoldDoor,
+  IceDoor,
   Diamond,
   Emerald,
   Ruby,
   Sapphire,
   Gold,
   Silver,
+  NeonGreenEnemy,
+  NeonRedEnemy,
+  NeonBlueEnemy,
 };

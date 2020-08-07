@@ -8,7 +8,7 @@ import {
   FIELD_HEIGHT,
   FIELD_WIDTH,
 } from '../other/Constants';
-import { Ball, BlackHole, Diamond } from '../other/Items';
+import { Diamond } from '../other/Items';
 import { connect } from 'react-redux';
 import { IRootReducer } from '../reducers';
 
@@ -309,18 +309,18 @@ const drawWalls = (props: IProps) => {
     );
   };
 
-  const drawHole = () => {
-    return (
-      <div
-        style={{
-          marginTop: FIELD_HEIGHT / 5,
-          marginLeft: FIELD_WIDTH / 5,
-        }}
-      >
-        {BlackHole}
-      </div>
-    );
-  };
+  // const drawHole = () => {
+  //   return (
+  //     <div
+  //       style={{
+  //         marginTop: FIELD_HEIGHT / 5,
+  //         marginLeft: FIELD_WIDTH / 5,
+  //       }}
+  //     >
+  //       {BlackHole}
+  //     </div>
+  //   );
+  // };
 
   const drawDiamond = () => {
     return (
@@ -356,7 +356,7 @@ const drawWalls = (props: IProps) => {
   } else if (rightWall) {
     return <div> {drawRightWall()} </div>;
   } else if (hasHole) {
-    return <div> {drawHole()} </div>;
+    return <div> </div>;
   } else if (hasDiamond) {
     return <div> {drawDiamond()} </div>;
   }

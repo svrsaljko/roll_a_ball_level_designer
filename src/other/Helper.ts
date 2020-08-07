@@ -4,10 +4,25 @@ import {
   NUMBER_OF_ROWS,
   FIELD_HEIGHT,
   FIELD_WIDTH,
-  USE_DARKRED_BALL,
-  USE_BLACK_HOLE,
-  USE_CLASSIC_DIAMOND,
+  //BALL
+  USE_DARK_RED_BALL,
+  USE_ICE_BALL,
+  USE_NEON_BLUE_BALL,
+  // DOOR
+  USE_BLACK_DOOR,
+  USE_GOLD_DOOR,
+  USE_ICE_DOOR,
+  // ITEMS
+  USE_GOLD,
+  USE_SILVER,
+  USE_DIAMOND,
   USE_EMERALD,
+  USE_SAPPHIRE,
+  USE_RUBY,
+  // ENEMY
+  USE_NEON_RED_ENEMY,
+  USE_NEON_GREEN_ENEMY,
+  USE_NEON_BLUE_ENEMY,
 } from './Constants';
 
 export const updateField = (field: IField, clickCounter: number): IField => {
@@ -69,55 +84,243 @@ export const updateField = (field: IField, clickCounter: number): IField => {
     field.leftWall = false;
   }
 
-  field.hasBall = false;
+  return fieldWithoutItem(field);
+};
+
+const fieldWithoutItem = (field: IField) => {
+  // BALL
+  field.hasDarkRedBall = false;
+  field.hasIceBall = false;
+  field.hasNeonBlueBall = false;
+  // DOOR
+  field.hasBlackDoor = false;
+  field.hasGoldDoor = false;
+  field.hasIceDoor = false;
+  // ITEMS
+  field.hasGold = false;
+  field.hasSilver = false;
   field.hasDiamond = false;
-  field.hasHole = false;
+  field.hasEmerald = false;
+  field.hasSapphire = false;
+  field.hasRuby = false;
+  // ENEMY
+  field.hasNeonRedEnemy = false;
+  field.hasNeonGreenEnemy = false;
+  field.hasNeonBlueEnemy = false;
+
+  return field;
+};
+
+const fieldWithDoor = (field: IField) => {
+  field.topWall = false;
+  field.bottomWall = false;
+  field.rightWall = false;
+  field.leftWall = false;
+  // BALL
+  field.hasDarkRedBall = false;
+  field.hasIceBall = false;
+  field.hasNeonBlueBall = false;
+  // ITEMS
+  field.hasGold = false;
+  field.hasSilver = false;
+  field.hasDiamond = false;
+  field.hasEmerald = false;
+  field.hasSapphire = false;
+  field.hasRuby = false;
+  // ENEMY
+  field.hasNeonRedEnemy = false;
+  field.hasNeonGreenEnemy = false;
+  field.hasNeonBlueEnemy = false;
+
+  return field;
+};
+const fieldWithBall = (field: IField) => {
+  field.topWall = false;
+  field.bottomWall = false;
+  field.rightWall = false;
+  field.leftWall = false;
+  // DOOR
+  field.hasBlackDoor = false;
+  field.hasGoldDoor = false;
+  field.hasIceDoor = false;
+  // ITEMS
+  field.hasGold = false;
+  field.hasSilver = false;
+  field.hasDiamond = false;
+  field.hasEmerald = false;
+  field.hasSapphire = false;
+  field.hasRuby = false;
+  // ENEMY
+  field.hasNeonRedEnemy = false;
+  field.hasNeonGreenEnemy = false;
+  field.hasNeonBlueEnemy = false;
+
+  return field;
+};
+
+const fieldWithDiamond = (field: IField) => {
+  field.topWall = false;
+  field.bottomWall = false;
+  field.rightWall = false;
+  field.leftWall = false;
+
+  // BALL
+  field.hasDarkRedBall = false;
+  field.hasIceBall = false;
+  field.hasNeonBlueBall = false;
+  // DOOR
+  field.hasBlackDoor = false;
+  field.hasGoldDoor = false;
+  field.hasIceDoor = false;
+  // ENEMY
+  field.hasNeonRedEnemy = false;
+  field.hasNeonGreenEnemy = false;
+  field.hasNeonBlueEnemy = false;
+
+  return field;
+};
+
+const fieldWithEnemy = (field: IField) => {
+  // BALL
+  field.hasDarkRedBall = false;
+  field.hasIceBall = false;
+  field.hasNeonBlueBall = false;
+  // DOOR
+  field.hasBlackDoor = false;
+  field.hasGoldDoor = false;
+  field.hasIceDoor = false;
+  // ITEMS
+  field.hasGold = false;
+  field.hasSilver = false;
+  field.hasDiamond = false;
+  field.hasEmerald = false;
+  field.hasSapphire = false;
+  field.hasRuby = false;
 
   return field;
 };
 
 export const updateItem = (field: IField, itemAction: string): IField => {
   switch (itemAction) {
-    case USE_DARKRED_BALL: {
-      field.hasBall = true;
+    // BALL
+    case USE_DARK_RED_BALL: {
+      field.hasDarkRedBall = true;
+      field.hasIceBall = false;
+      field.hasNeonBlueBall = false;
+      return fieldWithBall(field);
+    }
+    case USE_ICE_BALL: {
+      field.hasDarkRedBall = false;
+      field.hasIceBall = true;
+      field.hasNeonBlueBall = false;
+      return fieldWithBall(field);
+    }
+    case USE_NEON_BLUE_BALL: {
+      field.hasDarkRedBall = false;
+      field.hasIceBall = false;
+      field.hasNeonBlueBall = true;
+      return fieldWithBall(field);
+    }
+    // DOOR
+    case USE_BLACK_DOOR: {
+      field.hasBlackDoor = true;
+      field.hasGoldDoor = false;
+      field.hasIceDoor = false;
+      return fieldWithDoor(field);
+    }
+    case USE_GOLD_DOOR: {
+      field.hasBlackDoor = false;
+      field.hasGoldDoor = true;
+      field.hasIceDoor = false;
+      return fieldWithDoor(field);
+    }
+    case USE_ICE_DOOR: {
+      field.hasBlackDoor = false;
+      field.hasGoldDoor = false;
+      field.hasIceDoor = true;
+      return fieldWithDoor(field);
+    }
+    // ITEM
+    case USE_GOLD: {
+      field.hasGold = true;
+      field.hasSilver = false;
       field.hasDiamond = false;
-      field.hasHole = false;
-      field.topWall = false;
-      field.bottomWall = false;
-      field.rightWall = false;
-      field.leftWall = false;
+      field.hasEmerald = false;
+      field.hasSapphire = false;
+      field.hasRuby = false;
 
-      return field;
+      return fieldWithDiamond(field);
     }
-    case USE_BLACK_HOLE: {
-      field.hasBall = false;
+    case USE_SILVER: {
+      field.hasGold = false;
+      field.hasSilver = true;
       field.hasDiamond = false;
-      field.hasHole = true;
-      field.topWall = false;
-      field.bottomWall = false;
-      field.rightWall = false;
-      field.leftWall = false;
-      return field;
+      field.hasEmerald = false;
+      field.hasSapphire = false;
+      field.hasRuby = false;
+      return fieldWithDiamond(field);
     }
-    case USE_CLASSIC_DIAMOND: {
-      field.hasBall = false;
+    case USE_DIAMOND: {
+      field.hasGold = false;
+      field.hasSilver = false;
       field.hasDiamond = true;
-      field.hasHole = false;
-      field.topWall = false;
-      field.bottomWall = false;
-      field.rightWall = false;
-      field.leftWall = false;
-      return field;
+      field.hasEmerald = false;
+      field.hasSapphire = false;
+      field.hasRuby = false;
+      return fieldWithDiamond(field);
+    }
+    case USE_EMERALD: {
+      field.hasGold = false;
+      field.hasSilver = false;
+      field.hasDiamond = false;
+      field.hasEmerald = true;
+      field.hasSapphire = false;
+      field.hasRuby = false;
+      return fieldWithDiamond(field);
+    }
+    case USE_RUBY: {
+      field.hasGold = false;
+      field.hasSilver = false;
+      field.hasDiamond = false;
+      field.hasEmerald = false;
+      field.hasSapphire = false;
+      field.hasRuby = true;
+      return fieldWithDiamond(field);
+    }
+    case USE_SAPPHIRE: {
+      field.hasGold = false;
+      field.hasSilver = false;
+      field.hasDiamond = false;
+      field.hasEmerald = false;
+      field.hasSapphire = true;
+      field.hasRuby = false;
+      return fieldWithDiamond(field);
+    }
+    //ENEMY
+    case USE_NEON_RED_ENEMY: {
+      field.hasNeonRedEnemy = true;
+      field.hasNeonGreenEnemy = false;
+      field.hasNeonBlueEnemy = false;
+      return fieldWithEnemy(field);
+    }
+    case USE_NEON_GREEN_ENEMY: {
+      field.hasNeonRedEnemy = false;
+      field.hasNeonGreenEnemy = true;
+      field.hasNeonBlueEnemy = false;
+      return fieldWithEnemy(field);
+    }
+    case USE_NEON_BLUE_ENEMY: {
+      field.hasNeonRedEnemy = false;
+      field.hasNeonGreenEnemy = false;
+      field.hasNeonBlueEnemy = true;
+      return fieldWithEnemy(field);
     }
     default: {
-      field.hasBall = false;
-      field.hasDiamond = false;
-      field.hasHole = false;
       field.topWall = false;
       field.bottomWall = false;
       field.rightWall = false;
       field.leftWall = false;
-      return field;
+      return fieldWithoutItem(field);
     }
   }
 };
@@ -130,9 +333,6 @@ export const initializeFields = () => {
   let bottomWall: boolean = false;
   let rightWall: boolean = false;
   let leftWall: boolean = false;
-  let hasHole: boolean = false;
-  let hasBall: boolean = false;
-  let hasDiamond: boolean = false;
   let leftFieldId: null | number = null;
   let rightFieldId: null | number = null;
   let topFieldId: null | number = null;
@@ -140,6 +340,25 @@ export const initializeFields = () => {
   let top: number;
   let left: number;
   let clickCounter: number;
+  // BALL
+  let hasDarkRedBall: boolean;
+  let hasIceBall: boolean;
+  let hasNeonBlueBall: boolean;
+  // DOOR
+  let hasBlackDoor: boolean;
+  let hasGoldDoor: boolean;
+  let hasIceDoor: boolean;
+  // ITEMS
+  let hasGold: boolean;
+  let hasSilver: boolean;
+  let hasDiamond: boolean;
+  let hasEmerald: boolean;
+  let hasSapphire: boolean;
+  let hasRuby: boolean;
+  // ENEMY
+  let hasNeonRedEnemy: boolean;
+  let hasNeonGreenEnemy: boolean;
+  let hasNeonBlueEnemy: boolean;
 
   for (let i = 0; i < NUMBER_OF_ROWS; i++) {
     for (let j = 0; j < NUMBER_OF_COLUMNS; j++) {
@@ -200,6 +419,27 @@ export const initializeFields = () => {
       bottomFieldId =
         i === NUMBER_OF_ROWS - 1 ? null : fieldId + NUMBER_OF_COLUMNS;
 
+      // INITIALIZE WITHOUT ITEMS
+      // BALL
+      hasDarkRedBall = false;
+      hasIceBall = false;
+      hasNeonBlueBall = false;
+      // DOOR
+      hasBlackDoor = false;
+      hasGoldDoor = false;
+      hasIceDoor = false;
+      // ITEMS
+      hasGold = false;
+      hasSilver = false;
+      hasDiamond = false;
+      hasEmerald = false;
+      hasSapphire = false;
+      hasRuby = false;
+      // ENEMY
+      hasNeonRedEnemy = false;
+      hasNeonGreenEnemy = false;
+      hasNeonBlueEnemy = false;
+
       field = {
         top,
         left,
@@ -207,15 +447,31 @@ export const initializeFields = () => {
         bottomWall,
         rightWall,
         leftWall,
-        hasHole,
-        hasDiamond,
-        hasBall,
         fieldId,
         leftFieldId,
         rightFieldId,
         topFieldId,
         bottomFieldId,
         clickCounter,
+        // BALL
+        hasDarkRedBall,
+        hasIceBall,
+        hasNeonBlueBall,
+        // DOOR
+        hasBlackDoor,
+        hasGoldDoor,
+        hasIceDoor,
+        // ITEMS
+        hasGold,
+        hasSilver,
+        hasDiamond,
+        hasEmerald,
+        hasSapphire,
+        hasRuby,
+        // ENEMY
+        hasNeonRedEnemy,
+        hasNeonGreenEnemy,
+        hasNeonBlueEnemy,
       };
 
       fields[fieldId] = field;
@@ -224,9 +480,6 @@ export const initializeFields = () => {
       bottomWall = false;
       rightWall = false;
       leftWall = false;
-      hasHole = false;
-      hasBall = false;
-      hasDiamond = false;
     }
   }
 

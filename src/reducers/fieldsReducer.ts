@@ -5,7 +5,7 @@ import {
 } from '../actions/types';
 import { IActionUpdateFieldState } from '../actions/actions';
 import { IField } from '../interfaces/IField';
-import { USE_DARKRED_BALL } from '../other/Constants';
+import { USE_DARK_RED_BALL } from '../other/Constants';
 
 import { updateField, updateItem, initializeFields } from '../other/Helper';
 
@@ -16,7 +16,7 @@ export interface IFieldsReducerState {
 
 const initState: IFieldsReducerState = {
   fields: initializeFields(),
-  itemAction: USE_DARKRED_BALL,
+  itemAction: USE_DARK_RED_BALL,
 };
 
 //******UPDATE WALL UMISTO UPDATE FIELD ??

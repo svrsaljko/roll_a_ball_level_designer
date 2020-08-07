@@ -7,11 +7,42 @@
   border-style: solid;
 }
 
+.dark-red-ball {
+  background-color: darkred;
+}
+.dark-red-ball:hover {
+  background-color: darkred;
+}
+.ice-ball {
+  background-color: #dcf3ff;
+}
+.ice-ball:hover {
+  background-color: #dcf3ff;
+}
+.neon-blue-ball {
+  background-color: #1b03a3;
+}
+.neon-blue-ball:hover {
+  background-color: #1b03a3;
+}
+
 .black-door {
   background-color: black;
 }
 .black-door:hover {
   background-color: black;
+}
+.gold-door {
+  background-color: #ffd700;
+}
+.gold-door:hover {
+  background-color: #ffd700;
+}
+.ice-door {
+  background-color: #396d7c;
+}
+.ice-door:hover {
+  background-color: #396d7c;
 }
 
 .gold {

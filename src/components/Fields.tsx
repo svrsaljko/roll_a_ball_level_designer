@@ -73,8 +73,25 @@ function Fields(props: IProps) {
             bottomWall={field.bottomWall}
             rightWall={field.rightWall}
             leftWall={field.leftWall}
-            hasHole={field.hasHole}
+            // BALL
+            hasDarkRedBall={field.hasDarkRedBall}
+            hasIceBall={field.hasIceBall}
+            hasNeonBlueBall={field.hasNeonBlueBall}
+            // DOOR
+            hasBlackDoor={field.hasBlackDoor}
+            hasGoldDoor={field.hasGoldDoor}
+            hasIceDoor={field.hasIceDoor}
+            // ITEMS
+            hasGold={field.hasGold}
+            hasSilver={field.hasSilver}
             hasDiamond={field.hasDiamond}
+            hasEmerald={field.hasEmerald}
+            hasSapphire={field.hasSapphire}
+            hasRuby={field.hasRuby}
+            // ENEMY
+            hasNeonRedEnemy={field.hasNeonRedEnemy}
+            hasNeonGreenEnemy={field.hasNeonGreenEnemy}
+            hasNeonBlueEnemy={field.hasNeonBlueEnemy}
           />
         </div>
       ))}

@@ -43,10 +43,25 @@ import {
 } from '../other/Items';
 
 import {
-  USE_DARKRED_BALL,
-  USE_BLACK_HOLE,
-  USE_CLASSIC_DIAMOND,
+  //BALL
+  USE_DARK_RED_BALL,
+  USE_ICE_BALL,
+  USE_NEON_BLUE_BALL,
+  // DOOR
+  USE_BLACK_DOOR,
+  USE_GOLD_DOOR,
+  USE_ICE_DOOR,
+  // ITEMS
+  USE_GOLD,
+  USE_SILVER,
+  USE_DIAMOND,
   USE_EMERALD,
+  USE_SAPPHIRE,
+  USE_RUBY,
+  // ENEMY
+  USE_NEON_RED_ENEMY,
+  USE_NEON_GREEN_ENEMY,
+  USE_NEON_BLUE_ENEMY,
 } from './Constants';
 
 export const FIELDS_DESIGNS = [
@@ -178,40 +193,40 @@ export const WALLS_DESIGNS = [
   },
 ];
 
-export const ITEMS_DESIGNES = [
+export const ITEMS_DESIGNS = [
   // BALL
 
   {
     title: 'dark red ball',
     item: DarkRedBall,
-    action: USE_DARKRED_BALL,
+    action: USE_DARK_RED_BALL,
   },
   {
-    title: 'dark red ball',
+    title: 'ice ball',
     item: IceBall,
-    action: USE_DARKRED_BALL,
+    action: USE_ICE_BALL,
   },
   {
-    title: 'dark red ball',
+    title: 'neon blue ball',
     item: NeonBlueBall,
-    action: USE_DARKRED_BALL,
+    action: USE_NEON_BLUE_BALL,
   },
   // DOOR
 
   {
-    title: 'dark red ball',
+    title: 'black door',
     item: BlackDoor,
-    action: USE_DARKRED_BALL,
+    action: USE_BLACK_DOOR,
   },
   {
-    title: 'dark red ball',
+    title: 'gold door',
     item: GoldDoor,
-    action: USE_DARKRED_BALL,
+    action: USE_GOLD_DOOR,
   },
   {
-    title: 'dark red ball',
+    title: 'ice door',
     item: IceDoor,
-    action: USE_DARKRED_BALL,
+    action: USE_ICE_DOOR,
   },
 
   //ITEMS
@@ -219,17 +234,17 @@ export const ITEMS_DESIGNES = [
   {
     title: 'gold',
     item: Gold,
-    action: USE_EMERALD,
+    action: USE_GOLD,
   },
   {
     title: 'silver',
     item: Silver,
-    action: USE_EMERALD,
+    action: USE_SILVER,
   },
   {
-    title: 'classic diamond',
+    title: 'diamond',
     item: Diamond,
-    action: USE_CLASSIC_DIAMOND,
+    action: USE_DIAMOND,
   },
   {
     title: 'emerald',
@@ -239,27 +254,27 @@ export const ITEMS_DESIGNES = [
   {
     title: 'ruby',
     item: Ruby,
-    action: USE_EMERALD,
+    action: USE_RUBY,
   },
   {
     title: 'sapphire',
     item: Sapphire,
-    action: USE_EMERALD,
+    action: USE_SAPPHIRE,
   },
   // ENEMIES
   {
-    title: 'sapphire',
+    title: 'green enemy',
     item: NeonGreenEnemy,
-    action: USE_EMERALD,
+    action: USE_NEON_GREEN_ENEMY,
   },
   {
-    title: 'sapphire',
+    title: 'red enemy',
     item: NeonRedEnemy,
-    action: USE_EMERALD,
+    action: USE_NEON_RED_ENEMY,
   },
   {
-    title: 'sapphire',
+    title: 'blue enemy',
     item: NeonBlueEnemy,
-    action: USE_EMERALD,
+    action: USE_NEON_BLUE_ENEMY,
   },
 ];

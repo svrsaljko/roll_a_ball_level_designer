@@ -33,7 +33,11 @@ const createDiamondCutShape = (color: string) => {
   );
 };
 
-const createCircleShape = (color: string, className?: string) => {
+const createHexagonShape = (color: string) => {
+  return <div className={color}></div>;
+};
+
+const createCircleShape = (color: string, className: string) => {
   return (
     <div
       className={className}
@@ -66,43 +70,29 @@ const createEnemy = (color: string) => {
 
 // BALLS
 
-const DarkRedBall = createCircleShape('darkRed');
-const IceBall = createCircleShape('#dcf3ff');
-const NeonBlueBall = createCircleShape('#1b03a3');
+const DarkRedBall = createCircleShape('darkRed', 'dark-red-ball');
+const IceBall = createCircleShape('#dcf3ff', 'ice-ball');
+const NeonBlueBall = createCircleShape('#1b03a3', 'neon-blue-ball');
 
 //
 
 // DOOR
 
 const BlackDoor = createCircleShape('black', 'black-door');
-const GoldDoor = createCircleShape('#ffd700');
-const IceDoor = createCircleShape('#396d7c');
+const GoldDoor = createCircleShape('#ffd700', 'gold-door');
+const IceDoor = createCircleShape('#396d7c', 'ice-door');
 
 //
 
 // ITEMS
 
-const Ruby = createDiamondCutShape('#e0115f');
+const Gold = createHexagonShape('gold');
+const Silver = createHexagonShape('silver');
 const Diamond = createDiamondCutShape('#b9f2ff');
 const Emerald = createDiamondCutShape('#50c878');
+const Ruby = createDiamondCutShape('#e0115f');
 const Sapphire = createDiamondCutShape('#0f52ba');
 
-const Gold = (
-  <div
-    style={{
-      marginTop: '0.5rem',
-    }}
-    className="gold"
-  ></div>
-);
-const Silver = (
-  <div
-    style={{
-      marginTop: '0.5rem',
-    }}
-    className="silver"
-  ></div>
-);
 //
 
 // ENEMY

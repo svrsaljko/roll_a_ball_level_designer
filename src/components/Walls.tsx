@@ -8,9 +8,26 @@ import {
   FIELD_HEIGHT,
   FIELD_WIDTH,
 } from '../other/Constants';
-import { Diamond } from '../other/Items';
+import {
+  DarkRedBall,
+  IceBall,
+  NeonBlueBall,
+  BlackDoor,
+  GoldDoor,
+  IceDoor,
+  Diamond,
+  Emerald,
+  Ruby,
+  Sapphire,
+  Gold,
+  Silver,
+  NeonGreenEnemy,
+  NeonRedEnemy,
+  NeonBlueEnemy,
+} from '../other/Items';
 import { connect } from 'react-redux';
 import { IRootReducer } from '../reducers';
+import { ITEMS_DESIGNS } from '../other/Designer';
 
 interface IProps {
   topWall: boolean;
@@ -19,8 +36,26 @@ interface IProps {
   rightWall: boolean;
   brick: string;
   rotatedBrick: string;
-  hasHole: boolean;
+
+  // BALL
+  hasDarkRedBall: boolean;
+  hasIceBall: boolean;
+  hasNeonBlueBall: boolean;
+  // DOOR
+  hasBlackDoor: boolean;
+  hasGoldDoor: boolean;
+  hasIceDoor: boolean;
+  // ITEMS
+  hasGold: boolean;
+  hasSilver: boolean;
   hasDiamond: boolean;
+  hasEmerald: boolean;
+  hasSapphire: boolean;
+  hasRuby: boolean;
+  // ENEMY
+  hasNeonRedEnemy: boolean;
+  hasNeonGreenEnemy: boolean;
+  hasNeonBlueEnemy: boolean;
 }
 
 const drawWalls = (props: IProps) => {
@@ -31,8 +66,26 @@ const drawWalls = (props: IProps) => {
     rightWall,
     brick,
     rotatedBrick,
-    hasHole,
+
+    // BALL
+    hasDarkRedBall,
+    hasIceBall,
+    hasNeonBlueBall,
+    // DOOR
+    hasBlackDoor,
+    hasGoldDoor,
+    hasIceDoor,
+    // ITEMS
+    hasGold,
+    hasSilver,
     hasDiamond,
+    hasEmerald,
+    hasSapphire,
+    hasRuby,
+    // ENEMY
+    hasNeonRedEnemy,
+    hasNeonGreenEnemy,
+    hasNeonBlueEnemy,
   } = props;
   const drawLeftAndRightWall = () => {
     return (
@@ -309,28 +362,56 @@ const drawWalls = (props: IProps) => {
     );
   };
 
-  // const drawHole = () => {
-  //   return (
-  //     <div
-  //       style={{
-  //         marginTop: FIELD_HEIGHT / 5,
-  //         marginLeft: FIELD_WIDTH / 5,
-  //       }}
-  //     >
-  //       {BlackHole}
-  //     </div>
-  //   );
-  // };
-
-  const drawDiamond = () => {
+  const drawCircleShape = (shape: JSX.Element) => {
     return (
       <div
         style={{
-          marginTop: FIELD_HEIGHT / 5,
-          marginLeft: FIELD_WIDTH / 5,
+          position: 'absolute',
+          top: `${FIELD_HEIGHT / 4}px`,
+          left: `${FIELD_WIDTH / 5}px`,
         }}
       >
-        {Diamond}
+        {shape}
+      </div>
+    );
+  };
+  const drawHexagonShape = (shape: JSX.Element) => {
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          top: `${FIELD_HEIGHT / 3}px`,
+          left: `${FIELD_WIDTH / 5}px`,
+        }}
+      >
+        {shape}
+      </div>
+    );
+  };
+  const drawCutDiamondShape = (shape: JSX.Element) => {
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          top: `${FIELD_HEIGHT / 3}px`,
+          left: `${FIELD_WIDTH / 5}px`,
+        }}
+      >
+        {shape}
+      </div>
+    );
+  };
+
+  const drawEnemyShape = (shape: JSX.Element) => {
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          top: `${FIELD_HEIGHT * 0.45}px`,
+          left: `${FIELD_WIDTH * 0.45}px`,
+        }}
+      >
+        {shape}
       </div>
     );
   };
@@ -355,10 +436,36 @@ const drawWalls = (props: IProps) => {
     return <div> {drawLeftWall()} </div>;
   } else if (rightWall) {
     return <div> {drawRightWall()} </div>;
-  } else if (hasHole) {
-    return <div> </div>;
+  } else if (hasDarkRedBall) {
+    return <div>{drawCircleShape(DarkRedBall)}</div>;
+  } else if (hasNeonBlueBall) {
+    return <div>{drawCircleShape(NeonBlueBall)}</div>;
+  } else if (hasIceBall) {
+    return <div>{drawCircleShape(IceBall)}</div>;
+  } else if (hasBlackDoor) {
+    return <div>{drawCircleShape(BlackDoor)}</div>;
+  } else if (hasGoldDoor) {
+    return <div>{drawCircleShape(GoldDoor)}</div>;
+  } else if (hasIceDoor) {
+    return <div>{drawCircleShape(IceDoor)}</div>;
+  } else if (hasGold) {
+    return <div>{drawHexagonShape(Gold)}</div>;
+  } else if (hasSilver) {
+    return <div>{drawHexagonShape(Silver)}</div>;
   } else if (hasDiamond) {
-    return <div> {drawDiamond()} </div>;
+    return <div>{drawCutDiamondShape(Diamond)}</div>;
+  } else if (hasEmerald) {
+    return <div>{drawCutDiamondShape(Emerald)}</div>;
+  } else if (hasSapphire) {
+    return <div>{drawCutDiamondShape(Sapphire)}</div>;
+  } else if (hasRuby) {
+    return <div>{drawCutDiamondShape(Ruby)}</div>;
+  } else if (hasNeonRedEnemy) {
+    return <div>{drawEnemyShape(NeonRedEnemy)}</div>;
+  } else if (hasNeonGreenEnemy) {
+    return <div>{drawEnemyShape(NeonGreenEnemy)}</div>;
+  } else if (hasNeonBlueEnemy) {
+    return <div>{drawEnemyShape(NeonBlueEnemy)}</div>;
   }
 };
 

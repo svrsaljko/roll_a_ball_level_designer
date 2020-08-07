@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { IRootReducer } from '../reducers';
-import { ITEMS_DESIGNES } from '../other/Designer';
+import { ITEMS_DESIGNS } from '../other/Designer';
 import '../css/itemsDesigner.css';
 import { updateItemAction } from '../actions/actions';
 
@@ -22,7 +22,7 @@ function ItemsDesigner(props: IProps) {
     };
   }, []);
 
-  const itemsDesigner = ITEMS_DESIGNES.map((itemsDesign) => {
+  const itemsDesigner = ITEMS_DESIGNS.map((itemsDesign) => {
     const { title, item, action } = itemsDesign;
     return (
       <div

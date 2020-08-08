@@ -181,6 +181,10 @@ const fieldWithDiamond = (field: IField) => {
 };
 
 const fieldWithEnemy = (field: IField) => {
+  field.topWall = false;
+  field.bottomWall = false;
+  field.rightWall = false;
+  field.leftWall = false;
   // BALL
   field.hasDarkRedBall = false;
   field.hasIceBall = false;

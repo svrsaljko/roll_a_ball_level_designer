@@ -40,6 +40,7 @@ import {
   NeonGreenEnemy,
   NeonRedEnemy,
   NeonBlueEnemy,
+  Eraser,
 } from '../other/Items';
 
 import {
@@ -62,6 +63,8 @@ import {
   USE_NEON_RED_ENEMY,
   USE_NEON_GREEN_ENEMY,
   USE_NEON_BLUE_ENEMY,
+  //
+  USE_ERASER,
 } from './Constants';
 
 export const FIELDS_DESIGNS = [
@@ -267,5 +270,10 @@ export const ITEMS_DESIGNS = [
     title: 'blue enemy',
     item: NeonBlueEnemy,
     action: USE_NEON_BLUE_ENEMY,
+  },
+  {
+    title: 'eraser',
+    item: Eraser,
+    action: USE_ERASER,
   },
 ];

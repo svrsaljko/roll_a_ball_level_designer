@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/items.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEraser } from '@fortawesome/free-solid-svg-icons';
 const BALL_SIZE = 10;
 
 // DRAW FUNCTIONS
@@ -66,6 +67,10 @@ const createEnemy = (color: string) => {
   );
 };
 
+const createEraser = () => {
+  return <FontAwesomeIcon icon={faEraser} size="2x" />;
+};
+
 //
 
 // BALLS
@@ -100,6 +105,10 @@ const NeonGreenEnemy = createEnemy('#39ff14');
 const NeonRedEnemy = createEnemy('#b92e34');
 const NeonBlueEnemy = createEnemy('#1b03a3');
 
+// ERASER
+
+const Eraser = createEraser();
+
 //
 export {
   DarkRedBall,
@@ -117,4 +126,5 @@ export {
   NeonGreenEnemy,
   NeonRedEnemy,
   NeonBlueEnemy,
+  Eraser,
 };

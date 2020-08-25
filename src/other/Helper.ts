@@ -23,6 +23,8 @@ import {
   USE_NEON_RED_ENEMY,
   USE_NEON_GREEN_ENEMY,
   USE_NEON_BLUE_ENEMY,
+  // ERASER
+  USE_ERASER,
 } from './Constants';
 
 export const updateField = (field: IField, clickCounter: number): IField => {
@@ -318,6 +320,14 @@ export const updateItem = (field: IField, itemAction: string): IField => {
       field.hasNeonGreenEnemy = false;
       field.hasNeonBlueEnemy = true;
       return fieldWithEnemy(field);
+    }
+    //ERASER
+    case USE_ERASER: {
+      field.topWall = false;
+      field.bottomWall = false;
+      field.rightWall = false;
+      field.leftWall = false;
+      return fieldWithoutItem(field);
     }
     default: {
       field.topWall = false;

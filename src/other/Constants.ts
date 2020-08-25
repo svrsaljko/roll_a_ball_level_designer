@@ -45,7 +45,7 @@ export {
 
 export const NUMBER_OF_ROWS = 10;
 export const NUMBER_OF_COLUMNS = 9;
-export const BOARD_WIDTH = 300;
+export const BOARD_WIDTH = 299;
 export const BOARD_HEIGHT = 430;
 export const SENSITIVITY = 0.0;
 export const FIELD_WIDTH = BOARD_WIDTH / NUMBER_OF_COLUMNS;

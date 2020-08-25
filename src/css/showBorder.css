@@ -1,8 +1,11 @@
 .show-border-container {
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
-.button-border {
+/* .button-border {
   border: none;
 }
 
@@ -14,10 +17,20 @@
 .button-border:focus {
   background: white;
   outline: none;
-  /* transform: skew(-21deg); */
+  
   outline-offset: none;
 }
 
 .button-border:active {
   transform: scale(1);
+} */
+
+.button-border {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}
+.button-border:hover {
+  cursor: pointer;
+  background-color: darkred;
 }

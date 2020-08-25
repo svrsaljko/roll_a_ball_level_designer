@@ -1,4 +1,4 @@
-.generate-level-button {
+/* .generate-level-button {
   color: white;
   background-color: gray;
   border: none;
@@ -13,4 +13,14 @@
 .generate-level-button:hover {
   background-color: black;
   cursor: pointer;
+} */
+
+.generate-level-button {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}
+.generate-level-button:hover {
+  cursor: pointer;
+  background-color: darkred;
 }

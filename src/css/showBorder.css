@@ -5,26 +5,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* .button-border {
-  border: none;
-}
-
-.button-border:hover {
-  cursor: pointer;
-  background-color: gray;
-}
-
-.button-border:focus {
-  background: white;
-  outline: none;
-  
-  outline-offset: none;
-}
-
-.button-border:active {
-  transform: scale(1);
-} */
-
 .button-border {
   background-color: black;
   color: white;

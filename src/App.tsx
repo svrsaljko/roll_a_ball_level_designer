@@ -1,17 +1,12 @@
 import React from 'react';
-import Header from './components/Header';
-import CenterContainer from './components/CenterContainer';
-import BottomContainer from './components/BottomContainer';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div>
-      <Header />
-
-      <CenterContainer />
-      {/* komponenta za brisati */}
-      {/* <BottomContainer /> */}
-    </div>
+    <Router forceRefresh>
+      <Route exact path="/" component={Home} />
+    </Router>
   );
 }
 

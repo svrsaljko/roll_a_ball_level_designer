@@ -3,6 +3,7 @@ import Board from './Board';
 import FieldsDesigner from './FieldsDesigner';
 import WallsAndItemsDesigner from './WallsAndItemsDesigner';
 import ShowBorder from './ShowBorder';
+import BottomContainer from '../components/BottomContainer';
 
 export default function CenterContainer() {
   return (
@@ -23,6 +24,7 @@ export default function CenterContainer() {
       >
         <ShowBorder />
         <Board />
+        <BottomContainer />
       </div>
       <WallsAndItemsDesigner />
     </div>

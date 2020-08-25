@@ -10,6 +10,7 @@ import {
   HORIZONTAL_BRICK_WIDTH,
 } from '../other/Constants';
 import { IRootReducer } from '../reducers';
+import { v4 as uuid } from 'uuid';
 
 import '../css/wallsDesigner.css';
 
@@ -26,6 +27,7 @@ function WallsDesigner(props: IProps) {
     const { wall, title, rotatedWall } = wallsDesign;
     return (
       <div
+        key={uuid()}
         className="wall-design-container"
         style={{
           background: brick === wall ? 'gray' : 'white',

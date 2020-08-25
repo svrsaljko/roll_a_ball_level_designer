@@ -6,6 +6,8 @@ import { updateField, updateItem } from '../actions/actions';
 import { IField } from '../interfaces/IField';
 import { FIELD_HEIGHT, FIELD_WIDTH } from '../other/Constants';
 import Walls from './Walls';
+import { v4 as uuid } from 'uuid';
+
 import '../css/field.css';
 
 interface IProps {
@@ -50,9 +52,9 @@ function Fields(props: IProps) {
       {fields.map((field) => (
         <div
           className="field"
+          key={uuid()}
           onMouseOver={over}
           onMouseOut={out}
-          key={field.fieldId}
           onClick={() => {
             menuState
               ? onFieldClick(field.fieldId, field.clickCounter, updateField)

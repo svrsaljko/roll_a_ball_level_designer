@@ -5,6 +5,7 @@ import { IRootReducer } from '../reducers';
 import { ITEMS_DESIGNS } from '../other/Designer';
 import '../css/itemsDesigner.css';
 import { updateItemAction } from '../actions/actions';
+import { v4 as uuid } from 'uuid';
 
 interface IProps {
   updateItemAction: (itemAction: string) => void;
@@ -26,6 +27,7 @@ function ItemsDesigner(props: IProps) {
     const { title, item, action } = itemsDesign;
     return (
       <div
+        key={uuid()}
         style={{
           background: action === activeItem ? 'gray' : 'white',
         }}

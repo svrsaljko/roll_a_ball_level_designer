@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { v4 as uuid } from 'uuid';
 import { IRootReducer } from '../reducers';
 import { FIELDS_DESIGNS } from '../other/Designer';
 import { BOARD_WIDTH, BOARD_HEIGHT } from '../other/Constants';
@@ -22,7 +23,7 @@ function FieldsDesigner(props: IProps) {
   const fieldsDesigner = FIELDS_DESIGNS.map((fieldsDesign) => {
     const { image, title, description, currentFieldColor } = fieldsDesign;
     return (
-      <div style={{ margin: '0.5rem' }}>
+      <div key={uuid()} style={{ margin: '0.5rem' }}>
         {title}
         <div
           onClick={() => {

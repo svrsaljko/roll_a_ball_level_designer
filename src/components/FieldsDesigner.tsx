@@ -21,7 +21,12 @@ function FieldsDesigner(props: IProps) {
   };
 
   const fieldsDesigner = FIELDS_DESIGNS.map((fieldsDesign) => {
-    const { image, title, description, currentFieldColor } = fieldsDesign;
+    const {
+      image,
+      title,
+      frictionCoefficient,
+      currentFieldColor,
+    } = fieldsDesign;
     return (
       <div key={uuid()} style={{ margin: '0.5rem' }}>
         {title}
@@ -38,14 +43,13 @@ function FieldsDesigner(props: IProps) {
             width: `${BOARD_WIDTH / 3}px`,
           }}
         ></div>
-        <div>{description}</div>
+        <div> friction coefficient : {frictionCoefficient} </div>
       </div>
     );
   });
 
   return (
     <div>
-      CHOOSE FIELD DESIGN:
       <div className="fields-designs-container">{fieldsDesigner}</div>
     </div>
   );
